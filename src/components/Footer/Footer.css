@@ -1,0 +1,145 @@
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 4rem 0 2rem;
+  }
+  
+  .footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: flex-start;
+  }
+  
+  .company-name {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fe6700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .company-description {
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  
+  .footer-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #fe6700;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #fe6700;
+  }
+  
+  .footer-nav {
+    list-style: none;
+  }
+  
+  .footer-nav-item {
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-nav-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .footer-nav-link:hover {
+    color: #fe6700;
+  }
+  
+  .contact-list {
+    list-style: none;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-icon {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+  
+  .contact-text {
+    color: #ccc;
+  }
+  
+  .contact-link {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-link:hover {
+    color: #fe6700;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+  }
+  
+  .copyright {
+    color: #999;
+    margin-bottom: 1rem;
+  }
+  
+  .legal-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .legal-link {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+  
+  .legal-link:hover {
+    color: #fe6700;
+  }
+  
+  /* Media Queries */
+  @media (min-width: 768px) {
+    .footer-content {
+      grid-template-columns: 2fr 1fr 2fr;
+    }
+    
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    
+    .copyright {
+      margin-bottom: 0;
+    }
+  }

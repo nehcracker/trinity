@@ -1,0 +1,274 @@
+.services-section {
+    padding: 1rem 0;
+    background-color: #f8f9fa;
+    margin: auto;
+  }
+  
+  .services-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .services-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .services-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #fe6700;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  .services-subtitle {
+    font-size: 1rem;
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: #666;
+    line-height: 1.7;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Effect selector */
+  .effect-selector {
+    margin: 2rem 0;
+  }
+  
+  .effect-selector p {
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .effect-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .effect-button {
+    padding: 0.5rem 1rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  .effect-button:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .effect-button.active {
+    background-color: #fe6700;
+    color: white;
+    border-color: #fe6700;
+  }
+  
+  /* Main Swiper */
+  .services-swiper {
+    padding: 2rem 0;
+    width: 100%;
+  }
+  
+  .service-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .service-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .service-description {
+    color: #666;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .service-details {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    flex-grow: 1;
+  }
+  
+  .service-button {
+    align-self: flex-start;
+    background-color: #fe6700;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .service-button:hover {
+    background-color: #e05c00;
+  }
+  
+  /* Thumbs Swiper */
+  .thumbs-container {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  
+  .thumbs-swiper {
+    width: 100%;
+  }
+  
+  .thumb-item {
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .thumb-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .thumb-overlay span {
+    color: white;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  
+  .swiper-slide-thumb-active .thumb-item {
+    border: 2px solid #fe6700;
+  }
+  
+  .swiper-slide-thumb-active .thumb-overlay {
+    background-color: rgba(254, 103, 0, 0.8);
+  }
+  
+  /* Custom Swiper styling */
+/* Custom Swiper Navigation Buttons */
+/* Custom Swiper Navigation Buttons */
+.services-swiper .swiper-button-next,
+.services-swiper .swiper-button-prev {
+  color: #fe6700;
+  width: 30px;  /* Reduced from 40px */
+  height: 30px; /* Reduced from 40px */
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.services-swiper .swiper-button-next:after,
+.services-swiper .swiper-button-prev:after {
+  font-size: 14px; /* Reduced from 18px */
+  font-weight: bold;
+}
+
+.services-swiper .swiper-button-next {
+  right: 5px; /* Reduced from 10px */
+}
+
+.services-swiper .swiper-button-prev {
+  left: 5px; /* Reduced from 10px */
+}
+  
+  .services-swiper .swiper-pagination-bullet {
+    background-color: #3756f9;
+    opacity: 0.5;
+  }
+  
+  .services-swiper .swiper-pagination-bullet-active {
+    background-color: #fe6700;
+    opacity: 1;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .services-title {
+      font-size: 1.5rem;
+      text-align: justify;
+    }
+    
+    .services-subtitle {
+      font-size: 1rem;
+      text-align: justify;
+    }
+  
+    .effect-buttons {
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .service-image {
+      height: 150px;
+    }
+    
+    .service-content {
+      padding: 1rem;
+    }
+    
+    .service-title {
+      font-size: 1rem;
+    }
+    
+    .thumb-item {
+      height: 60px;
+    }
+    
+    .thumb-overlay {
+      padding: 0.25rem;
+    }
+    
+    .thumb-overlay span {
+      font-size: 0.7rem;
+    }
+  }

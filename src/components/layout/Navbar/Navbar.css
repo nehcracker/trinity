@@ -1,0 +1,273 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease;
+  padding: 1.5rem 0;
+  background-color: transparent;
+  color: rgb(240, 240, 240);
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.793);
+  color: #fe6700;
+  padding: 0.7rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-image {
+  width: auto;
+  height: 50px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo-accent {
+  margin-left: 0.5rem;
+  font-weight: 300;
+  color: #a3c6ff;
+}
+
+.logo-accent.scrolled {
+  color: #2563eb;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.nav-link {
+  position: relative;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover {
+  color: #fe6700;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #fe6700;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #fe6700;
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  height: 3px;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background-color: #fe6700;
+  color: white !important;
+  border-radius: 5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-button:hover,
+.contact-button.active {
+  background-color: #e05c00;
+}
+
+/* Mobile Menu Button - Enlarged for better touch targeting */
+.mobile-menu-button {
+  display: block;
+  cursor: pointer;
+  padding: 10px;   /* Added padding for larger touch area */
+  margin: -10px;   /* Negative margin to compensate for padding */
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-button {
+    display: none;
+  }
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 8px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 16px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+/* Improved Mobile Navigation Menu */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.9);  /* Semi-transparent background */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);                 /* Blur effect for depth */
+  border-radius: 0 0 10px 10px;                /* Rounded corners on bottom */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  /* Shadow for depth */
+  margin-top: 10px;                            /* Gap between header and dropdown */
+}
+
+.mobile-nav-link {
+  padding: 16px 20px;                          /* Increased padding for better touch targets */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  color: #333;                                 /* Better contrast for readability */
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: block;                              /* Full width for easier tapping */
+  text-align: center;                          /* Centered text */
+}
+
+.navbar.scrolled .mobile-nav-link {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: #fe6700;
+  background-color: rgba(254, 103, 0, 0.05);   /* Subtle background on hover/active */
+}
+
+.mobile-nav-link.active {
+  font-weight: 600;
+}
+
+.mobile-contact-button {
+  margin: 16px 20px;                           /* Changed to margin instead of top-only */
+  padding: 14px 0;                             /* Increased padding for better touch target */
+  background-color: #fe6700;
+  color: white;
+  border-radius: 5px;
+  font-weight: 600;                            /* Slightly bolder */
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;                              /* Full width for easier tapping */
+  box-shadow: 0 4px 8px rgba(254, 103, 0, 0.2); /* Shadow for depth */
+  transition: all 0.3s ease;
+}
+
+.mobile-contact-button:hover,
+.mobile-contact-button:active,
+.mobile-contact-button.active {
+  background-color: #e05c00;
+  transform: translateY(-2px);                 /* Subtle lift effect on hover */
+  box-shadow: 0 6px 12px rgba(254, 103, 0, 0.3);
+}
+
+/* Touch-friendly adjustments for mobile */
+@media (max-width: 767px) {
+  .navbar-container {
+    width: 95%;                                /* Slightly wider container on mobile */
+  }
+  
+  .hamburger {
+    width: 28px;                               /* Slightly smaller hamburger */
+  }
+  
+  /* Ensure the mobile menu has good spacing on smaller screens */
+  .mobile-nav {
+    max-height: 70vh;                          /* Prevent menu from being too tall */
+    overflow-y: auto;                          /* Allow scrolling if needed */
+  }
+}

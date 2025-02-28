@@ -1,0 +1,361 @@
+.contact-section {
+  padding-bottom: 3rem;
+  background-color: #f8f9fa;
+  position: relative;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/public/assets/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.03;
+  z-index: 0;
+}
+
+.contact-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fe6700;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #fe6700, #3756f9);
+  border-radius: 2px;
+}
+
+.contact-subtitle {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #666;
+  line-height: 1.6;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Form Styles */
+.contact-form-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.contact-form-wrapper {
+  padding: 2.5rem;
+}
+
+.contact-form-wrapper h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #3756f9;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.contact-form-wrapper h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #fe6700;
+}
+
+/* Increased spacing between form rows */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem; /* Added margin between rows */
+}
+
+.form-row .form-group {
+  margin-bottom: 0; /* Removed bottom margin from groups since rows have margin */
+  
+  width: 90%;
+}
+
+.form-group:not(.form-row .form-group) {
+  margin-bottom: 2rem; /* Added margin for form groups that aren't in a row */
+}
+
+.form-group {
+  margin-bottom: 0; /* Removed bottom margin from groups since rows have margin */
+  
+  width: 90%;
+}
+
+.form-group:not(.form-row .form-group) {
+  margin-bottom: 2rem; /* Added margin for form groups that aren't in a row */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem; /* Slightly increased padding */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3756f9;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(55, 86, 249, 0.1);
+}
+
+/* Style select dropdowns consistently */
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* Make dropdowns open above content when near page bottom */
+.form-group select option {
+  padding: 10px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px; /* Slightly increased height */
+}
+
+.submit-button {
+  background-color: #fe6700;
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1rem; /* Added margin above button */
+}
+
+.submit-button:hover {
+  background-color: #e05c00;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  background-color: #ffb380;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Contact Info Styles */
+.contact-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-map {
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-details {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-details h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #333;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.contact-details h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #3756f9;
+}
+
+.contact-info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(254, 103, 0, 0.1), rgba(55, 86, 249, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.contact-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.contact-text p {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 0.3rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #fe6700;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.social-icon {
+  font-size: 1rem;
+  font-style: normal;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .contact-content {
+    grid-template-columns: 3fr 2fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .contact-form-wrapper {
+    padding: 2.5rem;
+  }
+  
+  .contact-map {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-form-wrapper,
+  .contact-details {
+    padding: 1.5rem;
+  }
+  
+  .form-row {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .submit-button {
+    padding: 0.8rem 1.2rem;
+  }
+}
