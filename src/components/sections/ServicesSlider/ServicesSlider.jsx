@@ -4,7 +4,6 @@ import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/module
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -20,56 +19,51 @@ const ServicesSlider = () => {
     triggerOnce: true
   });
 
+  // Updated services array with new content
   const services = [
     {
-        id: 1,
-        title: 'Business Loans & Investment Financing',
-        image: '/assets/images/business.jpg',
-        shortDesc: 'Flexible funding solutions to fuel business growth and expansion.',
-        fullDesc: 'Our business loan and investment financing solutions are designed to meet your specific needs, whether you\'re looking to expand operations, invest in new equipment, or capitalize on market opportunities. With competitive rates and flexible terms, we ensure you have the capital needed to achieve your business objectives.',
-        
+      id: 1,
+      title: 'Donations',
+      image: '/assets/images/donations.jpg',
+      shortDesc: 'Facilitating corporate and private donations for impactful projects.',
+      fullDesc: 'We connect donors with high-impact social and humanitarian initiatives, and structure effective fundraising strategies for non-profits and charitable organizations. Our team helps maximize donation impact through strategic partnerships and transparent fund management.',
     },
     {
-        id: 2,
-        title: 'Asset-Based Lending',
-        image: '/assets/images/asset-based.jpg',
-        shortDesc: 'Leveraging your existing assets to secure competitive funding.',
-        fullDesc: 'Our asset-based lending solutions allow you to unlock the value of your existing assets, including inventory, equipment, and accounts receivable. This flexible financing approach provides immediate liquidity without diluting ownership, making it ideal for businesses with substantial assets but limited cash flow.',
-        
+      id: 2,
+      title: 'Government & NGO Grants',
+      image: '/assets/images/grants.jpg',
+      shortDesc: 'Expert assistance in securing grants from government bodies and international organizations.',
+      fullDesc: 'We provide comprehensive assistance in securing grants from local governments, international NGOs, and global financial institutions. Our experts offer guidance on eligibility criteria, application processes, and compliance requirements, alongside professional grant writing and proposal development services for high success rates.',
     },
     {
-        id: 3,
-        title: 'Real Estate Financing',
-        image: '/assets/images/real-estate.jpg',
-        shortDesc: 'Specialized funding for commercial and residential real estate ventures.',
-        fullDesc: 'From commercial property acquisition to residential developments, our real estate financing options provide the resources you need to secure and develop profitable properties. Our team of experts will guide you through the process, ensuring optimal financing structures that align with your investment strategy.',
-        
+      id: 3,
+      title: 'Development Funds',
+      image: '/assets/images/development.jpg',
+      shortDesc: 'Sourcing funding for infrastructure, social, and economic development projects.',
+      fullDesc: 'Our team specializes in sourcing funding for infrastructure, social, and economic development projects. We support businesses, governments, and organizations in accessing sustainable financing and structuring long-term funding solutions for both public and private sector development initiatives.',
     },
     {
-        id: 1,
-        title: 'Business Loans & Investment Financing',
-        image: '/assets/images/business.jpg',
-        shortDesc: 'Flexible funding solutions to fuel business growth and expansion.',
-        fullDesc: 'Our business loan and investment financing solutions are designed to meet your specific needs, whether you\'re looking to expand operations, invest in new equipment, or capitalize on market opportunities. With competitive rates and flexible terms, we ensure you have the capital needed to achieve your business objectives.',
-        
+      id: 4,
+      title: 'Microfinance & Community Loans',
+      image: '/assets/images/microfinance.jpg',
+      shortDesc: 'Providing funding for small businesses and entrepreneurs in underserved communities.',
+      fullDesc: 'We facilitate access to low-interest community development loans and partner with impact investors to support grassroots projects. Our microfinance solutions are designed to empower small businesses and entrepreneurs in underserved communities, fostering economic growth and self-sufficiency.',
     },
     {
-        id: 2,
-        title: 'Asset-Based Lending',
-        image: '/assets/images/asset-based.jpg',
-        shortDesc: 'Leveraging your existing assets to secure competitive funding.',
-        fullDesc: 'Our asset-based lending solutions allow you to unlock the value of your existing assets, including inventory, equipment, and accounts receivable. This flexible financing approach provides immediate liquidity without diluting ownership, making it ideal for businesses with substantial assets but limited cash flow.',
-        
+      id: 5,
+      title: 'Impact Investment',
+      image: '/assets/images/impact.jpg',
+      shortDesc: 'Connecting investors with high-impact, socially responsible projects.',
+      fullDesc: 'Our team specializes in structuring blended finance solutions for sustainable development and providing advisory services for ethical and impact-driven investments. We connect forward-thinking investors with high-impact, socially responsible projects that deliver both financial returns and meaningful social or environmental benefits.',
     },
     {
-        id: 3,
-        title: 'Real Estate Financing',
-        image: '/assets/images/real-estate.jpg',
-        shortDesc: 'Specialized funding for commercial and residential real estate ventures.',
-        fullDesc: 'From commercial property acquisition to residential developments, our real estate financing options provide the resources you need to secure and develop profitable properties. Our team of experts will guide you through the process, ensuring optimal financing structures that align with your investment strategy.',
-        
+      id: 6,
+      title: 'Crowdfunding & Alternative Financing',
+      image: '/assets/images/crowdfunding.jpg',
+      shortDesc: 'Helping organizations raise funds through innovative platforms and models.',
+      fullDesc: 'We help organizations raise funds through global crowdfunding platforms, structure peer-to-peer lending and social impact investment campaigns, and support innovative financing models for sustainable projects. Our alternative financing solutions are perfect for creative initiatives that might not fit traditional funding models.',
     }
-];
+  ];
 
   const toggleServiceDetails = (id) => {
     if (expandedService === id) {
@@ -117,16 +111,13 @@ const ServicesSlider = () => {
           className="services-header"
           variants={headerVariants}
         >
-          <h2 className="services-title">
-            Financial services tailored to your needs 
-          </h2>
+          <h2 className="services-title">Our Core Services</h2>
           <p className="services-subtitle">
-          We offer comprehensive financial sourcing solutions, including <strong>non-collateral funds, 
-          no-guarantee loans, and financing with a low interest rate of 6.5% APR.</strong> Our goal is to 
-          provide businesses and real estate investors with seamless access to funding tailored to their needs.
+            At Trinity Financing Agent, we connect businesses, non-profits, and development projects 
+            with sustainable funding solutions. Our expertise ensures seamless access to <strong>donations</strong>, 
+            <strong>government & NGO grants</strong>, and <strong>development funds</strong>, along with other tailored financing solutions.
           </p>
         </motion.div>
-
 
         <motion.div
           variants={headerVariants}
@@ -143,6 +134,7 @@ const ServicesSlider = () => {
             }}
             spaceBetween={30}
             slidesPerView={1}
+            centeredSlides={true} /* Center the slides */
             navigation
             pagination={{ clickable: true }}
             autoplay={{ 
@@ -150,9 +142,9 @@ const ServicesSlider = () => {
               disableOnInteraction: false,
               pauseOnMouseEnter: true
             }}
-            loop={true} // Enable infinite loop
+            loop={true}
             loopFillGroupWithBlank={true}
-            speed={800} // Transition speed in ms
+            speed={800}
             breakpoints={{
               640: {
                 slidesPerView: 2,
@@ -222,7 +214,6 @@ const ServicesSlider = () => {
             ))}
           </Swiper>
         </motion.div>
-        
         
       </div>
     </motion.section>

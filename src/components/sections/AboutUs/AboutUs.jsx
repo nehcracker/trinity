@@ -79,8 +79,10 @@ const AboutUs = () => {
         >
           <h2 className="about-title">Who We Are</h2>
           <p className="about-subtitle">
-            Trinity Financing Agent is your trusted partner in securing tailored financial solutions, 
-            offering expertise in business funding, real estate investments, and asset-based lending.
+            At Trinity Financing Agent, we are committed to bridging the financial gap for businesses, 
+            organizations, and development projects. <strong>With a deep understanding of global funding opportunities,
+            we specialize in securing grants, donations, and development funds to drive economic growth, social 
+            impact, and sustainable development.</strong>
           </p>
         </motion.div>
 

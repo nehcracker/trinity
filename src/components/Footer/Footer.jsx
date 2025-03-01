@@ -19,9 +19,10 @@ const Footer = () => {
           <div className="footer-company">
             <h3 className="company-name">Trinity Financing Agent</h3>
             <p className="company-description">
-            We specialize in business funding, real estate investments, and asset-based lending, ensuring 
-            that our clients receive the best funding options with competitive terms. Our extensive network 
-            of financial institutions allows us to offer innovative and flexible financing for diverse business needs.
+            At Trinity Financing Agent, we are committed to bridging the financial gap for businesses, 
+            organizations, and development projects. With a deep understanding of global funding opportunities, 
+            we specialize in securing grants, donations, and development funds to drive economic growth, social 
+            impact, and sustainable development.
             </p>
             
           </div>

@@ -26,7 +26,7 @@
   }
   
   .company-description {
-    max-width: 300px;
+    max-width: auto;
     margin-bottom: 1.5rem;
     color: #ccc;
     line-height: 1.6;
@@ -52,7 +52,8 @@
   }
   
   .footer-nav {
-    list-style: none;
+    list-style: decimal-leading-zero;
+    color: #fe6700;
   }
   
   .footer-nav-item {

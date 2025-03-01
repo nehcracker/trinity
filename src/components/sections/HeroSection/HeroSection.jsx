@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import Button from '../../common/Button/Button';
@@ -6,18 +6,37 @@ import Button from '../../common/Button/Button';
 import './HeroSection.css';
 
 const HeroSection = () => {
-  // For advanced parallax effect with Framer Motion
-  const { scrollY } = useScroll();
-  const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
+  // Add viewport width detection for optimizations
+  const [isMobile, setIsMobile] = useState(false);
   
-  // Text animation variants
+  useEffect(() => {
+    // Check if viewport is mobile on mount
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Run on mount
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  // For advanced parallax effect with Framer Motion - reduce intensity on mobile
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 500], [0, isMobile ? 75 : 150]);
+  
+  // Text animation variants - simplified for mobile
   const titleVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: isMobile ? 15 : 30 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: { 
-        duration: 0.8, 
+        duration: isMobile ? 0.5 : 0.8, 
         ease: "easeOut",
         delay: 0.2
       }
@@ -25,12 +44,12 @@ const HeroSection = () => {
   };
   
   const subtitleVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: isMobile ? 15 : 30 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: { 
-        duration: 0.8, 
+        duration: isMobile ? 0.5 : 0.8, 
         ease: "easeOut",
         delay: 0.4
       }
@@ -43,18 +62,18 @@ const HeroSection = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.6,
-        staggerChildren: 0.2
+        staggerChildren: isMobile ? 0.1 : 0.2
       }
     }
   };
   
   const buttonVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: isMobile ? 10 : 20 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: { 
-        duration: 0.5, 
+        duration: isMobile ? 0.3 : 0.5, 
         ease: "easeOut" 
       }
     }
@@ -62,14 +81,11 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="hero-section">
-      {/* Background image with parallax effect */}
+      {/* Background image with parallax effect - reduced intensity on mobile */}
       <motion.div 
         className="hero-background"
         style={{ y: backgroundY }}
       />
-
-      {/* Overlay gradient */}
-      <div className="hero-overlay"></div>
 
       {/* Content */}
       <div className="hero-content">
@@ -80,7 +96,6 @@ const HeroSection = () => {
           animate="visible"
         >
           Trinity Financing Agent
-          
         </motion.h1>
 
         <motion.h2
@@ -90,7 +105,6 @@ const HeroSection = () => {
           animate="visible"
         >
           Global Financial sourcing brokers
-          
         </motion.h2>
 
         <motion.p 
@@ -102,7 +116,6 @@ const HeroSection = () => {
          We specialize in <strong>sourcing grants, donations, government grants, international development funds, 
          philanthropic contributions, and corporate social responsibility (CSR)</strong> funding for various industries, 
          including non-profit organizations, and individuals.
-
         </motion.p>
 
         <motion.div
@@ -111,12 +124,13 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={buttonVariants}>
-          <Link 
+          <motion.div variants={buttonVariants} className="button-container">
+            <Link 
               to="contact"
               smooth={true} 
               duration={800} 
-              offset={-70}
+              offset={isMobile ? -50 : -70} // Adjusted offset for mobile
+              className="full-width-link"
             >
               <Button 
                 text="Free consultation" 
@@ -125,12 +139,13 @@ const HeroSection = () => {
             </Link>
           </motion.div>
           
-          <motion.div variants={buttonVariants}>
+          <motion.div variants={buttonVariants} className="button-container">
             <Link 
               to="services"
               smooth={true} 
               duration={800} 
-              offset={-70}
+              offset={isMobile ? -50 : -70} // Adjusted offset for mobile
+              className="full-width-link"
             >
               <Button 
                 text="Explore Our Services" 
@@ -141,19 +156,32 @@ const HeroSection = () => {
         </motion.div>
       </div>
       
-      {/* Scroll indicator */}
+      {/* Scroll indicator - simplified animation for mobile */}
       <motion.div 
-        className="scroll-indicator"
+        className="scroll-down-indicator"
         animate={{ 
-          y: [0, 12, 0],
+          y: [0, isMobile ? 8 : 12, 0],
         }}
         transition={{ 
           repeat: Infinity, 
-          duration: 1.5,
+          duration: isMobile ? 1.2 : 1.5,
           ease: "easeInOut"
         }}
       >
-        <div className="scroll-arrow"></div>
+        <Link
+          to={isMobile ? "services" : "about"} // Shorter scroll on mobile
+          smooth={true}
+          duration={800}
+          offset={-70}
+          className="scroll-link"
+        >
+          <div className="scroll-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span className="scroll-text">Scroll Down</span>
+        </Link>
       </motion.div>
     </section>
   );
