@@ -112,11 +112,17 @@ const HeroSection = () => {
           animate="visible"
         >
           <motion.div variants={buttonVariants}>
-            <Button 
-              text="Get a Free Consultation" 
-              onClick={() => window.location.href = '/contact'} 
-              className="primary-button"
-            />
+          <Link 
+              to="contact"
+              smooth={true} 
+              duration={800} 
+              offset={-70}
+            >
+              <Button 
+                text="Free consultation" 
+                className="secondary-button"
+              />
+            </Link>
           </motion.div>
           
           <motion.div variants={buttonVariants}>
