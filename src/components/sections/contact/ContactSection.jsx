@@ -517,7 +517,7 @@ const ContactSection = () => {
           >
             <motion.div className="contact-map" variants={itemVariants}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937957!2d2.292292615407657!3d48.85836897928727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel%20Tower!5e0!3m2!1sen!2sus!4v1607594166780!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.3498185962394!2d27.920040537785958!3d-26.15273440543969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95a006292f3f2b%3A0x33a15337db9fa923!2sRegus%20-%20Johannesburg%2C%20West%20Rand%20-%20Constantia%20Kloof!5e0!3m2!1sen!2ske!4v1740907067726!5m2!1sen!2ske"
                 width="100%"
                 height="250"
                 style={{ border: 0 }}
@@ -535,7 +535,7 @@ const ContactSection = () => {
                   <div className="contact-icon">📍</div>
                   <div className="contact-text">
                     <h4>Visit Us</h4>
-                    <p>123 Finance Street, Suite 500<br />New York, NY 10001</p>
+                    <p>Ground flr, Bldg 4, 50 Constantia Blvd, Constantia Kloof, Johannesburg, 1709, South Africa</p>
                   </div>
                 </div>
                 

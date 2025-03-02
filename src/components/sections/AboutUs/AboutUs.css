@@ -261,6 +261,7 @@
   background-color: white;
   color: #fe6700;
   border-radius: 5px;
+  border: 2px solid #fe6700;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -268,6 +269,8 @@
 }
 
 .primary-button:hover {
+  color : white;
+  background-color: #fe6700;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -280,14 +283,15 @@
 }
 
 .about-secondary-button {
-  background-color: transparent;
-  border: 2px solid white;
+  background-color: #fe6700;
+  border: 2px solid whitesmoke;
   color: white;
+  padding: 0.8rem 1.5rem;
   border-radius: 5px;
 }
 
 .about-secondary-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.633);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }

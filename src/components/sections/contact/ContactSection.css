@@ -288,6 +288,7 @@
 
 .contact-text p {
   color: #666;
+  text-align: justify;
   line-height: 1.5;
   margin-bottom: 0.3rem;
 }

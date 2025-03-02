@@ -51,12 +51,9 @@ const Footer = () => {
             <ul className="contact-list">
               <li className="contact-item">
                 <span className="contact-icon">📍</span>
-                <span className="contact-text">123 Financial Plaza, New York, NY 10001</span>
+                <span className="contact-text">Ground flr, Bldg 4, 50 Constantia Blvd, Constantia Kloof, Johannesburg, 1709, South Africa</span>
               </li>
-              <li className="contact-item">
-                <span className="contact-icon">📞</span>
-                <span className="contact-text">(800) 555-0123</span>
-              </li>
+              
               <li className="contact-item">
                 <span className="contact-icon">📧</span>
                 <a href="mailto:info@trinityfinancing.com" className="contact-link">

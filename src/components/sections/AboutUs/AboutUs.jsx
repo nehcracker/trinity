@@ -77,6 +77,7 @@ const AboutUs = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
         >
+          
           <h2 className="about-title">Who We Are</h2>
           <p className="about-subtitle">
             At Trinity Financing Agent, we are committed to bridging the financial gap for businesses, 
