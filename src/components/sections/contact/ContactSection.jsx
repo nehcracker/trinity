@@ -255,6 +255,11 @@ const countries = [
   { code: "ZW", name: "Zimbabwe" }
 ];
 
+// API URL based on environment
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? '/api/contact' 
+  : 'http://localhost:5000/api/contact';
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -286,38 +291,57 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setFormStatus({
+          isSubmitting: false,
+          isSubmitted: true,
+          error: null
+        });
+        
+        // Reset form after successful submission
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          city: '',
+          country: '',
+          service: '',
+          message: ''
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus(prevState => ({
+            ...prevState,
+            isSubmitted: false
+          }));
+        }, 5000);
+      } else {
+        throw new Error(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
       setFormStatus({
         isSubmitting: false,
-        isSubmitted: true,
-        error: null
+        isSubmitted: false,
+        error: error.message || 'Failed to send your message. Please try again later.'
       });
-      
-      // Reset form after submission
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        city: '',
-        country: '',
-        service: '',
-        message: ''
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus(prevState => ({
-          ...prevState,
-          isSubmitted: false
-        }));
-      }, 5000);
-    }, 1500);
+    }
   };
 
   // Animation variants
@@ -431,6 +455,7 @@ const ContactSection = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Your phone number"
+                      required
                     />
                   </div>
                 </div>
@@ -446,6 +471,7 @@ const ContactSection = () => {
                       value={formData.city}
                       onChange={handleChange}
                       placeholder="Your city"
+                      required
                     />
                   </div>
                   
@@ -456,6 +482,7 @@ const ContactSection = () => {
                       name="country"
                       value={formData.country}
                       onChange={handleChange}
+                      required
                     >
                       {countries.map(country => (
                         <option key={country.code} value={country.code}>
@@ -477,10 +504,10 @@ const ContactSection = () => {
                     required
                   >
                     <option value="">Select a service</option>
-                    <option value="NGO-grants">government & NGO grants</option>
+                    <option value="NGO-grants">Government & NGO Grants</option>
                     <option value="Donations">Donations</option>
                     <option value="Development-Funds">Development Funds</option>
-                    <option value="crowdfunding">crowdfunding & grantmaking</option>
+                    <option value="crowdfunding">Crowdfunding & Grantmaking</option>
                     <option value="Agri-Business">Agri-Business Financing</option>
                     <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
                     <option value="Micro-Finance">Micro Financing Services</option>
@@ -549,8 +576,8 @@ const ContactSection = () => {
                   <div className="contact-icon">📧</div>
                   <div className="contact-text">
                     <h4>Email Us</h4>
-                    <p>info@trinityfinancing.com</p>
-                    <p>support@trinityfinancing.com</p>
+                    <p>contact@trinityfinancing.com</p>
+                    <p>finance.support@trinityfinancing.com</p>
                   </div>
                 </div>
               </div>
