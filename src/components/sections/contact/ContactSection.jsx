@@ -575,7 +575,7 @@ const ContactSection = () => {
                 <div className="contact-info-item">
                   <div className="contact-icon">📧</div>
                   <div className="contact-text">
-                    <h4>Email Us</h4>
+                    <h4>Email Us today</h4>
                     <p>contact@trinityfinancing.com</p>
                     <p>finance.support@trinityfinancing.com</p>
                   </div>
