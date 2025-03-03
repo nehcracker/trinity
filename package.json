@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.17.1",
     "framer-motion": "^12.4.7",
+    "helmet": "^8.0.0",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
@@ -22,9 +23,12 @@
     "web-vitals": "^2.1.4"
   },
   "reactSnap": {
-  "skipThirdPartyRequests": true,
-  "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
-},
+    "skipThirdPartyRequests": true,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

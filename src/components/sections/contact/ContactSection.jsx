@@ -477,9 +477,15 @@ const ContactSection = () => {
                     required
                   >
                     <option value="">Select a service</option>
-                    <option value="business-loans">Business Loans</option>
-                    <option value="real-estate">Real Estate Financing</option>
-                    <option value="asset-based">Asset-Based Lending</option>
+                    <option value="NGO-grants">government & NGO grants</option>
+                    <option value="Donations">Donations</option>
+                    <option value="Development-Funds">Development Funds</option>
+                    <option value="crowdfunding">crowdfunding & grantmaking</option>
+                    <option value="Agri-Business">Agri-Business Financing</option>
+                    <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
+                    <option value="Micro-Finance">Micro Financing Services</option>
+                    <option value="Business-Loans">Business Loans</option>
+                    <option value="Real-Estate">Real Estate Financing</option>
                     <option value="other">Other Services</option>
                   </select>
                 </div>

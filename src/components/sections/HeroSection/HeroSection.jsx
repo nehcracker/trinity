@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'helmet';
+
 import { Link } from 'react-scroll';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import Button from '../../common/Button/Button';
@@ -80,6 +82,25 @@ const HeroSection = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>trinity financing | Global Financial sourcing brokers</title>
+      <meta name="description" content="We specialize in sourcing grants, donations, government grants, international development funds, philanthropic contributions, and corporate social responsibility (CSR) funding for various industries, including non-profit organizations, and individuals." />
+      <meta name="keywords" content="trinity financing, global financial sourcing brokers, grants, donations, government grants, international development funds, philanthropic contributions, corporate social responsibility, CSR, funding, non-profit organizations, individuals funding, " />
+      <link rel="canonical" href="https://trinityfinancing.com/about" />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content="" />
+      <meta property="og:image" content="https://trinityfinancing.com/hero-ng.jpg" />
+      <meta property="og:url" content="https://trinityfinancing.com/about" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Trinity Financing" />
+      <meta property="og:locale" content="en_UK" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:alt" content="trinity financing" />
+      <meta property="og:image:secure_url" content="https://trinityfinancing.com  /hero-ng.jpg" />
+      </Helmet>
     <section id="hero" className="hero-section">
       {/* Background image with parallax effect - reduced intensity on mobile */}
       <motion.div 
@@ -184,6 +205,7 @@ const HeroSection = () => {
         </Link>
       </motion.div>
     </section>
+    </>
   );
 };
 
