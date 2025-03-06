@@ -258,7 +258,8 @@ const countries = [
 // API URL based on environment
 const API_URL = process.env.NODE_ENV === 'production' 
   ? '/api/contact' 
-  : 'http://localhost:5000/api/contact';
+  : 'http://localhost:5000/api/contact'; // Ensure this URL is correct for development
+
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -304,7 +305,8 @@ const ContactSection = () => {
         body: JSON.stringify(formData),
       });
       
-      const data = await response.json();
+      const data = await response.json(); // Check if response is valid JSON
+
       
       if (data.success) {
         setFormStatus({
@@ -333,9 +335,12 @@ const ContactSection = () => {
           }));
         }, 5000);
       } else {
-        throw new Error(data.message || 'Something went wrong. Please try again.');
+        throw new Error(data.message || 'Unexpected response from server. Please try again.');
+
       }
     } catch (error) {
+      console.error('Error response:', error);
+
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
