@@ -39,6 +39,7 @@
     "web-vitals": "^2.1.4",
     "webpack-dev-middleware": "^7.4.2"
   },
+  
   "reactSnap": {
     "skipThirdPartyRequests": true,
     "puppeteerArgs": [
