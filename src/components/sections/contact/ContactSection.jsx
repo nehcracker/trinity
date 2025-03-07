@@ -257,9 +257,8 @@ const countries = [
 
 // API URL based on environment
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? '/api/contact' 
-  : 'http://localhost:5000/api/contact'; // Ensure this URL is correct for development
-
+  ? '/api/email/contact' 
+  : 'http://localhost:5000/api/email/contact';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -270,6 +269,7 @@ const ContactSection = () => {
     city: '',
     country: '',
     service: '',
+    subject: '',
     message: ''
   });
   
@@ -305,10 +305,13 @@ const ContactSection = () => {
         body: JSON.stringify(formData),
       });
       
-      const data = await response.json(); // Check if response is valid JSON
-
+      // Check if response is JSON or HTML
+      const contentType = response.headers.get("content-type");
       
-      if (data.success) {
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        
+        if (data.success) {
         setFormStatus({
           isSubmitting: false,
           isSubmitted: true,
@@ -324,6 +327,7 @@ const ContactSection = () => {
           city: '',
           country: '',
           service: '',
+          subject: '',
           message: ''
         });
         
@@ -335,16 +339,28 @@ const ContactSection = () => {
           }));
         }, 5000);
       } else {
-        throw new Error(data.message || 'Unexpected response from server. Please try again.');
-
+          throw new Error(data.message || 'Unexpected response from server. Please try again.');
+        }
+      } else {
+        // If not JSON, handle HTML or other response formats
+        throw new Error('Server responded with non-JSON format. Please contact the administrator.');
       }
     } catch (error) {
       console.error('Error response:', error);
-
+      
+      // More detailed error handling
+      let errorMessage = 'Failed to send your message. Please try again later.';
+      
+      if (error.message.includes('Unexpected token')) {
+        errorMessage = 'The server returned an invalid response format. Please contact support.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
-        error: error.message || 'Failed to send your message. Please try again later.'
+        error: errorMessage
       });
     }
   };
@@ -475,11 +491,9 @@ const ContactSection = () => {
                       name="city"
                       value={formData.city}
                       onChange={handleChange}
-                      placeholder="Your city"
                       required
                     />
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="country">Country</label>
                     <select
@@ -497,32 +511,34 @@ const ContactSection = () => {
                     </select>
                   </div>
                 </div>
+
                 
                 {/* Row 4: Service of Interest */}
                 <div className="form-group">
-                  <label htmlFor="service">Service of Interest</label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select a service</option>
-                    <option value="NGO-grants">Government & NGO Grants</option>
-                    <option value="Donations">Donations</option>
-                    <option value="Development-Funds">Development Funds</option>
-                    <option value="crowdfunding">Crowdfunding & Grantmaking</option>
-                    <option value="Agri-Business">Agri-Business Financing</option>
-                    <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
-                    <option value="Micro-Finance">Micro Financing Services</option>
-                    <option value="Business-Loans">Business Loans</option>
-                    <option value="Real-Estate">Real Estate Financing</option>
-                    <option value="other">Other Services</option>
-                  </select>
-                </div>
+                    <label htmlFor="service">Service of Interest</label>
+                    <select
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Governmen-NGO-grants">Government & NGO Grants</option>
+                      <option value="Donations">Donations</option>
+                      <option value="Development-Funds">Development Funds</option>
+                      <option value="crowdfunding">Crowdfunding & Grantmaking</option>
+                      <option value="Agri-Business-Financing">Agri-Business Financing</option>
+                      <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
+                      <option value="Micro-Finance">Micro Financing Services</option>
+                      <option value="Business-Loans">Business Loans</option>
+                      <option value="Real-Estate">Real Estate Financing</option>
+                      <option value="other-Services">Other Services</option>
+                    </select>
+                  </div>
+
                 
-                {/* Row 5: Message */}
+                {/* Row 6: Message */}
                 <div className="form-group">
                   <label htmlFor="message">Your Inquiry Message</label>
                   <textarea
