@@ -39,7 +39,6 @@
     "web-vitals": "^2.1.4",
     "webpack-dev-middleware": "^7.4.2"
   },
-  
   "reactSnap": {
     "skipThirdPartyRequests": true,
     "puppeteerArgs": [
@@ -56,11 +55,11 @@
     "generate-sitemap": "node src/generateSitemap.js"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+    "extends": [ "react-app", "react-app/jest"],
+    "env": {
+    "jest": true
+  }
+},
   "browserslist": {
     "production": [
       ">0.2%",
@@ -87,6 +86,7 @@
   },
   "devDependencies": {
     "eslint": "^9.21.0",
+    "eslint-plugin-jest": "^28.11.0",
     "nodemon": "^3.1.9",
     "react-router-sitemap": "^1.2.0",
     "sitemap": "^8.0.0"
