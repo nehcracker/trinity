@@ -1,58 +1,151 @@
-const { transporter, defaultEmail, ccEmail } = require('../config/email');
+// controllers/emailController.js
 const validator = require('validator');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
-// Helper function to validate input data
-const validateEmailInput = (data) => {
-  return Object.values(data).every(field => field && typeof field === 'string') && validator.isEmail(data.email);
-};
+// Create reusable transporter
+const transporter = nodemailer.createTransport({
+  host: "smtp.zoho.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.ZOHO_EMAIL || "contact@trinityfinancing.com",
+    pass: process.env.ZOHO_PASSWORD,
+  },
+  tls: {
+    rejectUnauthorized: true,
+  },
+});
 
-// Controller for sending contact form emails
 const sendContactEmail = async (req, res) => {
   try {
-    const { name, email, phone, location, service, message, company, subject, website } = req.body;
-
-    // Validate input data
-    if (!validateEmailInput(req.body)) {
-      return res.status(400).json({ success: false, message: 'All fields are required and must be valid' });
+    // Get all fields from the request body
+    const { name, email, phone, location, service, message, ...otherFields } = req.body;
+    
+    // Validate required fields
+    if (!name || !email || !message || !validator.isEmail(email)) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Name, valid email, and message are required' 
+      });
     }
 
-    // Construct email options
-    const userMailOptions = {
-      from: `"Trinity Financing" <${defaultEmail}>`,
-      to: email,
-      cc: ccEmail,
-      replyTo: defaultEmail,
-      subject: `Inquiry: ${validator.escape(service)}`,
+    // 1. Email to Trinity Financing (with all form fields)
+    const adminMailOptions = {
+      from: {
+        name: "Trinity Financing",
+        address: process.env.ZOHO_EMAIL || "contact@trinityfinancing.com"
+      },
+      to: process.env.ZOHO_EMAIL || "contact@trinityfinancing.com",
+      cc: process.env.ZOHO_CC_EMAIL || "finance.support@trinityfinancing.com",
+      replyTo: email, // Replies go to the client
+      subject: `Contact Form: ${service || 'New Inquiry'}`,
+      text: `
+Name: ${name}
+Email: ${email}
+Phone: ${phone || 'Not provided'}
+Location: ${location || 'Not provided'}
+Service: ${service || 'Not provided'}
+${Object.entries(otherFields).map(([key, value]) => 
+  `${key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}: ${value}`
+).join('\n')}
+
+Message:
+${message}
+      `,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="background-color: #fe6700; color: white; padding: 10px; text-align: center;">
-            New Contact Form Submission
-          </h1>
-          <p>You have received a new inquiry from your website contact form.</p>
-          
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr><td><strong>Name:</strong></td><td>${validator.escape(name)}</td></tr>
-            <tr><td><strong>Email:</strong></td><td><a href="mailto:${email}">${validator.escape(email)}</a></td></tr>
-            <tr><td><strong>Phone:</strong></td><td>${validator.escape(phone)}</td></tr>
-            <tr><td><strong>Location:</strong></td><td>${validator.escape(location)}</td></tr>
-            <tr><td><strong>Company:</strong></td><td>${validator.escape(company)}</td></tr>
-            <tr><td><strong>Website:</strong></td><td>${validator.escape(website)}</td></tr>
-            <tr><td><strong>Subject:</strong></td><td>${validator.escape(subject)}</td></tr>
-            <tr><td><strong>Service of Interest:</strong></td><td>${validator.escape(service)}</td></tr>
-          </table>
-
-          <div style="background-color: #f5f5f5; padding: 15px; border-left: 4px solid #fe6700; margin: 20px 0;">
-            <h3 style="margin-top: 0; color: #1a1a1a;">Message:</h3>
-            <p>${validator.escape(message)}</p>
+          <div style="background-color: #FF6600; color: white; padding: 20px;">
+            <h1 style="margin: 0; font-size: 24px;">New Contact Form Submission</h1>
           </div>
           
-          <p>Our team will review your inquiry and get back to you shortly.</p>
+          <div style="padding: 20px;">
+            <p>You have received a new inquiry from your website contact form.</p>
+            
+            <p><strong>Name:</strong> ${validator.escape(name)}</p>
+            <p><strong>Email:</strong> <a href="mailto:${validator.escape(email)}" style="color: #0066CC;">${validator.escape(email)}</a></p>
+            ${phone ? `<p><strong>Phone:</strong> ${validator.escape(phone)}</p>` : ''}
+            ${location ? `<p><strong>Location:</strong> ${validator.escape(location)}</p>` : ''}
+            ${service ? `<p><strong>Service of Interest:</strong> ${validator.escape(service)}</p>` : ''}
+            
+            ${Object.entries(otherFields).map(([key, value]) => {
+              const formattedKey = key.charAt(0).toUpperCase() + 
+                key.slice(1).replace(/([A-Z])/g, ' $1');
+              return `<p><strong>${formattedKey}:</strong> ${validator.escape(String(value))}</p>`;
+            }).join('')}
+            
+            <p><strong>Message:</strong></p>
+            <p>${validator.escape(message)}</p>
+          </div>
         </div>
       `,
     };
 
-    // Send email
-    await transporter.sendMail(userMailOptions);
+    // 2. Confirmation email to the client
+    const clientMailOptions = {
+      from: {
+        name: "Trinity Financing",
+        address: process.env.ZOHO_EMAIL || "contact@trinityfinancing.com"
+      },
+      to: email,
+      subject: "Thank You for Contacting Trinity Financing",
+      text: `
+Dear ${name},
+
+Thank you for contacting Trinity Financing. We have received your inquiry and will get back to you shortly.
+
+Here's a summary of the information you provided:
+
+Name: ${name}
+Email: ${email}
+${phone ? `Phone: ${phone}` : ''}
+${location ? `Location: ${location}` : ''}
+${service ? `Service of Interest: ${service}` : ''}
+
+Your Message:
+${message}
+
+We appreciate your interest and will respond as soon as possible.
+
+Best regards,
+The Trinity Financing Team
+      `,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background-color: #FF6600; color: white; padding: 20px;">
+            <h1 style="margin: 0; font-size: 24px;">Thank You for Contacting Us</h1>
+          </div>
+          
+          <div style="padding: 20px;">
+            <p>Dear ${validator.escape(name)},</p>
+            
+            <p>Thank you for contacting Trinity Financing. We have received your inquiry and will get back to you shortly.</p>
+            
+            <p>Here's a summary of the information you provided:</p>
+            
+            <div style="background-color: #f7f7f7; padding: 15px; margin: 15px 0;">
+              <p><strong>Name:</strong> ${validator.escape(name)}</p>
+              <p><strong>Email:</strong> ${validator.escape(email)}</p>
+              ${phone ? `<p><strong>Phone:</strong> ${validator.escape(phone)}</p>` : ''}
+              ${location ? `<p><strong>Location:</strong> ${validator.escape(location)}</p>` : ''}
+              ${service ? `<p><strong>Service of Interest:</strong> ${validator.escape(service)}</p>` : ''}
+              
+              <p><strong>Your Message:</strong></p>
+              <p>${validator.escape(message)}</p>
+            </div>
+            
+            <p>We appreciate your interest and will respond as soon as possible.</p>
+            
+            <p>Best regards,<br>
+            The Trinity Financing Team</p>
+          </div>
+        </div>
+      `,
+    };
+
+    // Send both emails
+    await transporter.sendMail(adminMailOptions);
+    await transporter.sendMail(clientMailOptions);
 
     return res.status(200).json({
       success: true,
