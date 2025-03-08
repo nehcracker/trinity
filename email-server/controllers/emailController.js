@@ -77,13 +77,12 @@ ${message ? `\nMessage:\n${message}` : ''}
         address: defaultEmail
       },
       to: email,
-      subject: "Thank You for Contacting Trinity Financing",
+      subject: "Trinity Financing",
       text: `
 Dear ${fullName},
 
-Thank you for contacting ${zohoName}. We have received your inquiry and will get back to you shortly.
-
-We appreciate your interest and will respond as soon as possible.
+Thank you for contacting ${zohoName}. 
+We have received your inquiry and will get back to you shortly. We appreciate your interest and will respond as soon as possible.
 
 Best regards,
 The ${zohoName} Team
