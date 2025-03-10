@@ -596,7 +596,7 @@ const ContactSection = () => {
                 <div className="contact-info-item">
                   <div className="contact-icon">📞</div>
                   <div className="contact-text">
-                    <h4>Call Us/WhatsApp</h4>
+                    <h4>Call Us - WhatsApp</h4>
                     <p>+27 (843) 389-575</p>
                     <p>Mon-Fri 9:00 AM - 6:00 PM</p>
                   </div>
