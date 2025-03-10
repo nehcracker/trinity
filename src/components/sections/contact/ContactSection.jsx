@@ -592,6 +592,15 @@ const ContactSection = () => {
                     <p>Ground flr, Bldg 4, 50 Constantia Blvd, Constantia Kloof, Johannesburg, 1709, South Africa</p>
                   </div>
                 </div>
+
+                <div className="contact-info-item">
+                  <div className="contact-icon">📞</div>
+                  <div className="contact-text">
+                    <h4>Call Us/WhatsApp</h4>
+                    <p>+27 (843) 389-575</p>
+                    <p>Mon-Fri 9:00 AM - 6:00 PM</p>
+                  </div>
+                </div>
                 
                 <div className="contact-info-item">
                   <div className="contact-icon">📧</div>
