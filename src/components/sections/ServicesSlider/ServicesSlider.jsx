@@ -24,7 +24,7 @@ const ServicesSlider = () => {
     {
       id: 1,
       title: 'Donations',
-      image: '/assets/images/donations.jpg',
+      image: '/assets/images/donations-d.jpg',
       shortDesc: 'Facilitating corporate and private donations for impactful projects.',
       fullDesc: 'We connect donors with high-impact social and humanitarian initiatives, and structure effective fundraising strategies for non-profits and charitable organizations. Our team helps maximize donation impact through strategic partnerships and transparent fund management.',
     },
@@ -38,14 +38,14 @@ const ServicesSlider = () => {
     {
       id: 3,
       title: 'Development Funds',
-      image: '/assets/images/development.jpg',
+      image: '/assets/images/develpoment-funds.jpg',
       shortDesc: 'Sourcing funding for infrastructure, social, and economic development projects.',
       fullDesc: 'Our team specializes in sourcing funding for infrastructure, social, and economic development projects. We support businesses, governments, and organizations in accessing sustainable financing and structuring long-term funding solutions for both public and private sector development initiatives.',
     },
     {
       id: 4,
       title: 'Microfinance & Community Loans',
-      image: '/assets/images/microfinance.jpg',
+      image: '/assets/images/micro-finance.jpg',
       shortDesc: 'Providing funding for small businesses and entrepreneurs in underserved communities.',
       fullDesc: 'We facilitate access to low-interest community development loans and partner with impact investors to support grassroots projects. Our microfinance solutions are designed to empower small businesses and entrepreneurs in underserved communities, fostering economic growth and self-sufficiency.',
     },
