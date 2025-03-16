@@ -17,6 +17,7 @@
     "framer-motion": "^12.4.7",
     "helmet": "^8.0.0",
     "isomorphic-fetch": "^3.0.0",
+    "lucide-react": "^0.482.0",
     "minimist": "^1.2.8",
     "mkdirp": "^3.0.1",
     "node-fetch": "^3.3.2",
@@ -55,11 +56,14 @@
     "generate-sitemap": "node src/generateSitemap.js"
   },
   "eslintConfig": {
-    "extends": [ "react-app", "react-app/jest"],
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
     "env": {
-    "jest": true
-  }
-},
+      "jest": true
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
