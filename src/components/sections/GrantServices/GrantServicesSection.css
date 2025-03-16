@@ -32,6 +32,7 @@
 
 .grant-services-section .section-description {
     max-width: 600px;
+    text-align: justify;
     margin: 1rem auto 0;
     color: #666;
     line-height: 1.6;
@@ -43,7 +44,6 @@
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
@@ -67,7 +67,9 @@
 }
 
 .grant-services-section .service-title {
+    text-align: justify;
     font-size: 1.125rem;
+    line-height: 1.4;
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: #333;
@@ -83,6 +85,22 @@
     margin: 0 auto;
     color: #666;
 }
+
+/* Service Card Hover Styles */
+.grant-services-section .service-card:hover {
+    background-color: #3756f9;
+    color: white;
+}
+
+.grant-services-section .service-card:hover .service-description {
+    color: antiquewhite;
+}
+
+.grant-services-section .service-card:hover .service-title {
+    color: white;
+}
+
+
 
 /* Services Grid (Desktop) */
 .grant-services-section .services-grid {
