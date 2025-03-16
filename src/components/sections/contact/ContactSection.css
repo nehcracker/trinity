@@ -1,3 +1,4 @@
+/* Base styles */
 .contact-section {
   padding-bottom: 3rem;
   background-color: #f8f9fa;
@@ -26,6 +27,7 @@
   z-index: 1;
 }
 
+/* Header styles */
 .contact-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -60,69 +62,77 @@
   line-height: 1.6;
 }
 
+/* Layout styles */
 .contact-content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-/* Form Styles */
-.contact-form-container {
+/* Common section styles */
+.contact-form-container,
+.contact-details {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
-.contact-form-wrapper {
+.contact-form-wrapper,
+.contact-details {
   padding: 2.5rem;
 }
 
-.contact-form-wrapper h3 {
+.contact-form-wrapper h3,
+.contact-details h3 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  color: #3756f9;
   position: relative;
   padding-bottom: 0.5rem;
 }
 
-.contact-form-wrapper h3::after {
+.contact-form-wrapper h3 {
+  color: #3756f9;
+}
+
+.contact-details h3 {
+  color: #333;
+}
+
+.contact-form-wrapper h3::after,
+.contact-details h3::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 40px;
   height: 3px;
+}
+
+.contact-form-wrapper h3::after {
   background-color: #fe6700;
 }
 
-/* Increased spacing between form rows */
+.contact-details h3::after {
+  background-color: #3756f9;
+}
+
+/* Form styles */
 .form-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-bottom: 0.75rem; /* Added margin between rows */
-}
-
-.form-row .form-group {
-  margin-bottom: 0; /* Removed bottom margin from groups since rows have margin */
-  
-  width: 90%;
-}
-
-.form-group:not(.form-row .form-group) {
-  margin-bottom: 2rem; /* Added margin for form groups that aren't in a row */
+  margin-bottom: 1.5rem;
 }
 
 .form-group {
-  margin-bottom: 0; /* Removed bottom margin from groups since rows have margin */
-  
-  width: 90%;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-.form-group:not(.form-row .form-group) {
-  margin-bottom: 2rem; /* Added margin for form groups that aren't in a row */
+.form-row .form-group {
+  margin-bottom: 0;
 }
 
 .form-group label {
@@ -136,7 +146,7 @@
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.9rem; /* Slightly increased padding */
+  padding: 0.9rem;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
@@ -151,7 +161,6 @@
   box-shadow: 0 0 0 2px rgba(55, 86, 249, 0.1);
 }
 
-/* Style select dropdowns consistently */
 .form-group select {
   appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -161,14 +170,9 @@
   padding-right: 2.5rem;
 }
 
-/* Make dropdowns open above content when near page bottom */
-.form-group select option {
-  padding: 10px;
-}
-
 .form-group textarea {
   resize: vertical;
-  min-height: 140px; /* Slightly increased height */
+  min-height: 140px;
 }
 
 .submit-button {
@@ -182,7 +186,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
-  margin-top: 1rem; /* Added margin above button */
+  margin-top: 1rem;
 }
 
 .submit-button:hover {
@@ -196,25 +200,26 @@
   transform: none;
 }
 
-.form-success-message {
-  background-color: #d4edda;
-  color: #155724;
+/* Message styles */
+.form-success-message,
+.form-error-message {
   padding: 1rem;
   border-radius: 5px;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+.form-success-message {
+  background-color: #d4edda;
+  color: #155724;
 }
 
 .form-error-message {
   background-color: #f8d7da;
   color: #721c24;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  text-align: center;
 }
 
-/* Contact Info Styles */
+/* Contact info styles */
 .contact-info-container {
   display: flex;
   flex-direction: column;
@@ -226,32 +231,6 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.contact-details {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.contact-details h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #333;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.contact-details h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 3px;
-  background-color: #3756f9;
 }
 
 .contact-info-items {
@@ -288,11 +267,11 @@
 
 .contact-text p {
   color: #666;
-  text-align: justify;
   line-height: 1.5;
   margin-bottom: 0.3rem;
 }
 
+/* Social links */
 .social-links {
   display: flex;
   gap: 1rem;
@@ -332,10 +311,6 @@
     grid-template-columns: 1fr 1fr;
   }
   
-  .contact-form-wrapper {
-    padding: 2.5rem;
-  }
-  
   .contact-map {
     height: 300px;
   }
@@ -343,7 +318,7 @@
 
 @media (max-width: 576px) {
   .contact-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
   .contact-form-wrapper,
@@ -353,10 +328,130 @@
   
   .form-row {
     gap: 1rem;
-    margin-bottom: 1.5rem;
   }
   
   .submit-button {
     padding: 0.8rem 1.2rem;
+  }
+}
+
+/* Add these additional styles to fix mobile responsiveness for Samsung S8 (around 360px width) */
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 576px) {
+  /* Form container adjustments */
+  .contact-form-wrapper,
+  .contact-details {
+    padding: 1.25rem;
+  }
+  
+  /* Input field adjustments for mobile */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding doesn't increase width */
+  }
+  
+  /* Force single column layout on smallest screens */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Reduce button size */
+  .submit-button {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Contact info text */
+  .contact-text h4 {
+    font-size: 1rem; 
+  }
+  
+  .contact-text p {
+    font-size: 0.9rem;
+  }
+  
+  /* Icon size adjustments */
+  .contact-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Fix contact title */
+  .contact-title {
+    font-size: 1.5rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  /* Reduce section header size */
+  .contact-form-wrapper h3,
+  .contact-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Reduce margins and paddings overall */
+  .contact-content {
+    gap: 1.5rem;
+  }
+  
+  .contact-section {
+    padding-bottom: 2rem;
+  }
+  
+  .contact-header {
+    margin-bottom: 2rem;
+  }
+  
+  /* Fix map height */
+  .contact-map {
+    height: 200px;
+  }
+  
+  /* Improve spacing in contact info */
+  .contact-info-items {
+    gap: 1.25rem;
+  }
+}
+
+/* Extremely narrow devices (under 375px like Galaxy Fold) */
+@media (max-width: 374px) {
+  .contact-container {
+    width: 95%;
+    padding: 0;
+  }
+  
+  .contact-form-wrapper,
+  .contact-details {
+    padding: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .contact-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.75rem;
+  }
+  
+  .contact-title::after {
+    width: 60px;
+  }
+  
+  .social-link {
+    width: 32px;
+    height: 32px;
   }
 }

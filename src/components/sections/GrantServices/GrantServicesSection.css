@@ -1,50 +1,49 @@
 /* GrantServicesSection.css - Scoped Version */
-
 .grant-services-section {
     background-color: #f8f9fa;
     padding: 4rem 0;
-  }
-  
-  .grant-services-section .container {
-    max-width: auto;
+}
+
+.grant-services-section .container {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
-  }
-  
-  /* Section Header Styles */
-  .grant-services-section .section-header {
+}
+
+/* Section Header Styles */
+.grant-services-section .section-header {
     text-align: center;
     margin-bottom: 3rem;
-  }
-  
-  .grant-services-section .section-header h2 {
+}
+
+.grant-services-section .section-header h2 {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #fe6700;
-  }
-  
-  .grant-services-section .divider {
+}
+
+.grant-services-section .divider {
     width: 6rem;
     height: 4px;
     background: linear-gradient(to right, #3756f9, #fe6700);
     margin: 0 auto;
-  }
-  
-  .grant-services-section .section-description {
+}
+
+.grant-services-section .section-description {
     max-width: 600px;
     margin: 1rem auto 0;
     color: #666;
     line-height: 1.6;
-  }
-  
-  /* Service Card Styles */
-  .grant-services-section .service-card {
+}
+
+/* Service Card Styles */
+.grant-services-section .service-card {
     border-radius: 8px;
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
@@ -53,75 +52,72 @@
     height: auto;
     min-height: 200px;
     background-color: white;
-  }
+}
 
-  .grant-services-section .service-card:hover {
+.grant-services-section .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-    /* Removed background color change on hover */
-  }
-  
-  .grant-services-section .service-icon {
+}
+
+.grant-services-section .service-icon {
     margin-bottom: 0.75rem;
     width: 30px;
     height: 30px;
     background-color: antiquewhite;
-  }
-  
-  .grant-services-section .service-title {
+}
+
+.grant-services-section .service-title {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #333; /* Changed from #fe6700 to a neutral color */
-  }
+    color: #333;
+}
 
-  .grant-services-section .service-title:hover {
-    color: #333; /* Same as non-hover state */
-  }
+.grant-services-section .service-title:hover {
+    color: #333;
+}
 
-
-  
-  .grant-services-section .service-description {
+.grant-services-section .service-description {
     font-size: 0.875rem;
     line-height: 1.4;
     margin: 0 auto;
     color: #666;
-  }
-  
-  /* Services Grid (Desktop) */
-  .grant-services-section .services-grid {
+}
+
+/* Services Grid (Desktop) */
+.grant-services-section .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 3rem;
     padding: 8px;
-  }
-  
-  /* Services Slider (Mobile) */
-  .grant-services-section .services-slider {
+}
+
+/* Services Slider (Mobile) */
+.grant-services-section .services-slider {
     display: none;
     position: relative;
     padding: 8px;
-  }
-  
-  .grant-services-section .slider-container {
+}
+
+.grant-services-section .slider-container {
     overflow: hidden;
-  }
-  
-  .grant-services-section .slider-item {
+}
+
+.grant-services-section .slider-item {
     display: flex;
     justify-content: center;
     padding: 8px;
-  }
-  
-  .grant-services-section .slider-controls {
+}
+
+.grant-services-section .slider-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1.5rem;
-  }
-  
-  .grant-services-section .slider-button {
+}
+
+.grant-services-section .slider-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,18 +128,18 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
-  }
-  
-  .grant-services-section .slider-button:hover {
+}
+
+.grant-services-section .slider-button:hover {
     background-color: #dee2e6;
-  }
-  
-  .grant-services-section .slider-indicators {
+}
+
+.grant-services-section .slider-indicators {
     display: flex;
     align-items: center;
-  }
-  
-  .grant-services-section .slider-indicator {
+}
+
+.grant-services-section .slider-indicator {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -152,21 +148,21 @@
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
-  }
-  
-  .grant-services-section .slider-indicator.active {
+}
+
+.grant-services-section .slider-indicator.active {
     width: 16px;
     border-radius: 4px;
     background-color: #3756f9;
-  }
-  
-  /* CTA Section */
-  .grant-services-section .cta-container {
+}
+
+/* CTA Section */
+.grant-services-section .cta-container {
     text-align: center;
     margin-top: 3rem;
-  }
-  
-  .grant-services-section .cta-button {
+}
+
+.grant-services-section .cta-button {
     display: inline-block;
     padding: 0.75rem 2rem;
     border-radius: 9999px;
@@ -176,97 +172,96 @@
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-  }
-  
-  .grant-services-section .cta-button:hover {
+}
+
+.grant-services-section .cta-button:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Featured Image Section */
-  .grant-services-section .featured-container {
+}
+
+/* Featured Image Section */
+.grant-services-section .featured-container {
     margin-top: 4rem;
     display: flex;
     justify-content: center;
-  }
-  
-  .grant-services-section .featured-image-wrapper {
+}
+
+.grant-services-section .featured-image-wrapper {
     position: relative;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 800px;
-  }
-  
-  .grant-services-section .featured-image {
+}
+
+.grant-services-section .featured-image {
     width: 100%;
     height: 16rem;
     object-fit: cover;
     display: block;
-  }
-  
-  .grant-services-section .featured-overlay {
+}
+
+.grant-services-section .featured-overlay {
     position: absolute;
     inset: 0;
-    
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .grant-services-section .featured-content {
+}
+
+.grant-services-section .featured-content {
     text-align: center;
     padding: 1.5rem;
     color: white;
-  }
-  
-  .grant-services-section .featured-title {
+}
+
+.grant-services-section .featured-title {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-  }
-  
-  .grant-services-section .featured-text {
+}
+
+.grant-services-section .featured-text {
     max-width: 28rem;
     line-height: 1.6;
-  }
-  
-  /* Media Queries */
-  @media (max-width: 992px) {
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
     .grant-services-section .services-grid {
-      grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .grant-services-section .services-grid {
-      display: none;
+        display: none;
     }
-    
+
     .grant-services-section .services-slider {
-      display: block;
+        display: block;
     }
-    
+
     .grant-services-section .section-header h2 {
-      font-size: 1.75rem;
+        font-size: 1.75rem;
     }
-    
+
     .grant-services-section .featured-title {
-      font-size: 1.25rem;
+        font-size: 1.25rem;
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .grant-services-section {
-      padding: 3rem 0;
+        padding: 3rem 0;
     }
-    
+
     .grant-services-section .section-header h2 {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-    
+
     .grant-services-section .featured-image {
-      height: 12rem;
+        height: 12rem;
     }
-  }
+}

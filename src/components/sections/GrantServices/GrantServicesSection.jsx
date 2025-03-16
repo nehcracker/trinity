@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Building, Users, Lightbulb, UsersRound, GraduationCap } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import './GrantServicesSection.css';
 
 const GrantServicesSection = () => {
@@ -52,8 +57,7 @@ const GrantServicesSection = () => {
     setActiveSlide((prev) => (prev === 0 ? services.length - 1 : prev - 1));
   };
 
-      // Updated ServiceCard component with more compact design
-    const ServiceCard = ({ service, isActive }) => {
+  const ServiceCard = ({ service, isActive }) => {
     const [isHovered, setIsHovered] = useState(false);
     
     const cardStyle = {
@@ -109,11 +113,24 @@ const GrantServicesSection = () => {
         
         {/* Mobile View - Slider */}
         <div className="services-slider">
-          <div className="slider-container">
-            <div className="slider-item">
-              <ServiceCard service={services[activeSlide]} isActive={true} />
-            </div>
-          </div>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 5000, // Set delay to 5000ms
+              disableOnInteraction: false,
+            }}
+            className="slider-container"
+          >
+            {services.map((service, index) => (
+              <SwiperSlide key={index}>
+                <ServiceCard service={service} isActive={true} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
           
           <div className="slider-controls">
             <button 
@@ -155,9 +172,8 @@ const GrantServicesSection = () => {
         </div>
       </div>
     </div>
-        
-        
   );
 };
 
 export default GrantServicesSection;
+
