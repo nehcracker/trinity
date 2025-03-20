@@ -1,7 +1,7 @@
 /* Hero Section - Base Styles */
 .hero-section {
     position: relative;
-    height: 100vh; /* Full viewport height */
+    height: 85vh; /* Full viewport height */
     min-height: 450px; /* Minimum height for small screens */
     display: flex;
     align-items: center;
@@ -46,7 +46,7 @@
 
 .hero-second-title {
     font-size: 1.25rem; /* Base font size for consistency */
-    text-align: center;
+    text-align: justify;
     opacity: 0.9;
     text-transform: capitalize;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -161,13 +161,17 @@
     }
     
     .hero-second-title {
-        font-size: 1.35rem;
+        
         text-transform: capitalize;
     }
     
     .hero-subtitle {
         font-size: 0.95rem;
         text-align: justify;
+    }
+    
+    .button-link {
+        padding: 0.6rem 1rem; /* Reduced height for buttons */
     }
 }
 
@@ -192,6 +196,7 @@
     
     .button-link {
         max-width: 220px;
+        padding: 0.7rem 1.2rem; /* Adjusted padding for buttons */
     }
 }
 
@@ -225,6 +230,7 @@
     .button-link {
         width: auto;
         min-width: 180px;
+        padding: 0.8rem 1.5rem; /* Adjusted padding for larger buttons */
     }
 }
 
@@ -263,7 +269,7 @@
     }
     
     .hero-title {
-        font-size: 2.75rem;
+        font-size: 2.55rem;
     }
     
     .hero-second-title {

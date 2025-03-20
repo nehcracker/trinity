@@ -1,0 +1,433 @@
+/* TrinityServicesSection.module.css */
+
+/* Variables for consistent theming */
+:root {
+  --primary-color: #3756f9;
+  --secondary-color: #fe6700;
+  --light-bg: #f8f9fa;
+  --white: #ffffff;
+  --dark-text: #333333;
+  --light-text: #666666;
+  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --transition-normal: all 0.3s ease;
+}
+
+/* Base styles */
+.trinityContainer {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark-text);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Section common styles */
+.servicesSection,
+.testimonialsSection,
+.ctaSection {
+  padding: 4rem 1rem;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.servicesContainer,
+.testimonialsContainer,
+.ctaContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.sectionTitle,
+.testimonialsTitle,
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--primary-color);
+  word-wrap: break-word; /* Prevent text overflow */
+}
+
+/* Services section styles */
+.servicesSection {
+  background-color: var(--light-bg);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .servicesGrid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicesGrid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.serviceCard {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.serviceCard:hover,
+.serviceCard.hovered {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--hover-shadow);
+}
+
+.serviceContent {
+  padding: 1.5rem;
+  flex-grow: 1;
+  transition: var(--transition-normal);
+  word-wrap: break-word; /* Prevent text overflow */
+}
+
+.serviceCard.hovered .serviceContent {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.serviceHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap; /* Prevent overlapping */
+}
+
+.serviceIcon {
+  padding: 0.75rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  background-color: #f0f4ff;
+  color: var(--primary-color);
+  transition: var(--transition-normal);
+}
+
+.serviceCard.hovered .serviceIcon {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.serviceTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  word-wrap: break-word; /* Prevent text overflow */
+}
+
+.serviceDescription {
+  margin-bottom: 1rem;
+  text-align: justify;
+  word-wrap: break-word; /* Prevent text overflow */
+}
+
+.serviceList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.serviceBullet {
+  color: var(--secondary-color);
+  margin-right: 0.5rem;
+}
+
+.serviceFooter {
+  padding: 0.75rem 1.5rem;
+  background-color: #f0f4ff;
+  text-align: center;
+  transition: var(--transition-normal);
+}
+
+.serviceCard.hovered .serviceFooter {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.serviceButton {
+  font-weight: 600;
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.serviceCard.hovered .serviceButton {
+  color: var(--white);
+}
+
+/* Testimonials section styles */
+.testimonialsSection {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.testimonialsTitle {
+  color: var(--white);
+}
+
+.testimonialsSliderContainer {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonialsSlider {
+  overflow: hidden;
+}
+
+.testimonialsTrack {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonialSlide {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 0 1rem;
+}
+
+.testimonialCard {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  height: 100%;
+  word-wrap: break-word; /* Prevent text overflow */
+}
+
+.testimonialText {
+  font-size: 1.125rem;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonialAuthor {
+  font-weight: 600;
+}
+
+/* Slider navigation buttons */
+.sliderNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  z-index: 10;
+}
+
+.sliderNavButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.prevButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
+
+.sliderDots {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.sliderDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.sliderDot.active {
+  background-color: var(--white);
+  transform: scale(1.25);
+}
+
+/* Call to action section styles */
+.ctaSection {
+  background-color: var(--white);
+  text-align: center;
+}
+
+.ctaContainer {
+  max-width: 800px;
+}
+
+.ctaText {
+  font-size: 1.125rem;
+  color: var(--light-text);
+  margin-bottom: 2rem;
+  word-wrap: break-word; /* Prevent text overflow */
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ctaButton {
+  padding: 0.75rem 2rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.ctaButton.primary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.ctaButton.secondary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .servicesSection,
+  .testimonialsSection,
+  .ctaSection {
+      padding: 3rem 1rem;
+  }
+
+  .sectionTitle,
+  .testimonialsTitle,
+  .ctaTitle {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+  }
+
+  .serviceIcon {
+      padding: 0.5rem;
+  }
+
+  .serviceTitle {
+      font-size: 1.125rem;
+  }
+
+  .testimonialCard {
+      padding: 1.5rem;
+  }
+
+  .testimonialText {
+      font-size: 1rem;
+  }
+
+  .sliderNavButton {
+      width: 35px;
+      height: 35px;
+  }
+
+  .ctaText {
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesSection,
+  .testimonialsSection,
+  .ctaSection {
+      padding: 2.5rem 0.75rem;
+  }
+
+  .sectionTitle,
+  .testimonialsTitle,
+  .ctaTitle {
+      font-size: 1.5rem;
+  }
+
+  .serviceContent {
+      padding: 1.25rem;
+  }
+
+  .serviceHeader {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .serviceIcon {
+      margin-right: 0;
+      margin-bottom: 0.75rem;
+  }
+
+  .testimonialCard {
+      padding: 1.25rem;
+  }
+
+  .sliderNavButton {
+      width: 30px;
+      height: 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .servicesSection,
+  .testimonialsSection,
+  .ctaSection {
+      padding: 2rem 0.5rem;
+  }
+
+  .sectionTitle,
+  .testimonialsTitle,
+  .ctaTitle {
+      font-size: 1.25rem;
+  }
+
+  .serviceContent {
+      padding: 1rem;
+  }
+
+  .serviceHeader {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .serviceIcon {
+      padding: 0.5rem;
+  }
+}

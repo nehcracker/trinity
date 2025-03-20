@@ -80,10 +80,11 @@ const AboutUs = () => {
           
           <h2 className="about-title">Who We Are</h2>
           <p className="about-subtitle">
-            At Trinity Financing Agent, we are committed to bridging the financial gap for businesses, 
-            organizations, and development projects. <strong>With a deep understanding of global funding opportunities,
-            we specialize in securing grants, donations, and development funds to drive economic growth, social 
-            impact, and sustainable development.</strong>
+          <strong>Trinity Financing Agent</strong> is a <strong>premier financial sourcing and intermediary agency dedicated to securing 
+          funds for individuals, businesses, and organizations worldwide.</strong> With a strong global network of lenders, 
+          financial institutions, and investors, we bridge the gap between funding sources and those in need of financial 
+          solutions. Our expertise spans various industries, ensuring tailored financing solutions that align with our clients'
+           unique needs and objectives.
           </p>
         </motion.div>
 

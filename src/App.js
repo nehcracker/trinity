@@ -10,6 +10,7 @@ import AboutUs from './components/sections/AboutUs/AboutUs';
 import KeyStats from './components/sections/KeyStats/KeyStats';
 import ContactSection from './components/sections/contact/ContactSection';
 import GrantServicesSection from './components/sections/GrantServices/GrantServicesSection';
+import TrinityServicesSection from './components/sections/servicesection/TrinityServicesSection';
 
 console.log("App component is rendering"); // Log for debugging
 console.log("HeroSection component is rendering"); // Log for debugging
@@ -42,6 +43,16 @@ function App() {
           className="section-container"
         >
          <ServicesSlider />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="section-container"
+        >
+        <TrinityServicesSection />
         </motion.div>
 
         <motion.div

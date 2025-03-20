@@ -116,7 +116,7 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          Trinity Financing Agent
+          Trinity Financing brokers
         </motion.h1>
 
         <motion.h2
@@ -125,7 +125,7 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          Global Financial sourcing brokers
+          Premier Financial Sourcing & Intermediary Agency
         </motion.h2>
 
         <motion.p 
