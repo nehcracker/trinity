@@ -8,12 +8,13 @@ const emailRateLimiter = require("./middlewares/rateLimiter");
 
 const app = express();
 
+app.use(cors()); // 🟢 Improved CORS security
 app.use(express.json());
-app.use(cors({ origin: process.env.ALLOWED_ORIGINS || "*" })); // 🟢 Improved CORS security
+// app.use(cors({ origin: process.env.ALLOWED_ORIGINS || "*" })); // 🟢 Improved CORS security
 app.use(compression()); // 🟢 Added for response compression
 
 // 🟢 Added Health Check Route
-app.get("/api/health", (req, res) => {
+app.get("/", (req, res) => {
     res.status(200).json({ success: true, message: "Server is running" });
 });
 
