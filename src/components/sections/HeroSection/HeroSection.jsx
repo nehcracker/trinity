@@ -116,7 +116,7 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          Trinity Financing brokers
+          Global Financial Sourcing brokers
         </motion.h1>
 
         <motion.h2
@@ -134,9 +134,9 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-         We specialize in <strong>sourcing grants, donations, government grants, international development funds, 
-         philanthropic contributions, and corporate social responsibility (CSR)</strong> funding for various industries, 
-         including non-profit organizations, and individuals.
+         Trinity Financial Soliciting Brokers has successfully connected thousands of 
+         companies worldwide with leading funding organizations and institutions, securing 
+         low-interest financing with swift processing times.
         </motion.p>
 
         <motion.div
