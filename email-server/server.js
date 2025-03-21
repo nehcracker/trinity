@@ -8,7 +8,13 @@ const emailRateLimiter = require("./middlewares/rateLimiter");
 
 const app = express();
 
-app.use(cors()); // 🟢 Improved CORS security
+// Replace the simple cors() with a more specific configuration
+app.use(cors({
+    origin: ['https://trinityfinancing.com', 'http://trinityfinancing.com', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+})); // 🟢 Improved CORS security
 app.use(express.json());
 // app.use(cors({ origin: process.env.ALLOWED_ORIGINS || "*" })); // 🟢 Improved CORS security
 app.use(compression()); // 🟢 Added for response compression
