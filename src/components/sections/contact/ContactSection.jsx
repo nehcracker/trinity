@@ -257,7 +257,7 @@ const countries = [
 
 // API URL based on environment
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? `${process.env.REACT_APP_API_URL}/api/email/contact` 
+  ? `/api/email/contact` 
   : 'http://localhost:5000/api/email/contact';
 
 const ContactSection = () => {
