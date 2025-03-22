@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './ContactSection.css';
+/* global gtag */
+
 
 // Comprehensive list of countries for the dropdown
 const countries = [
@@ -292,7 +294,10 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
+    gtag('event', 'conversion', {'send_to': 'AW-16898712872/T3iGCObq3qwaEKjK9_k-'});
+
+
     e.preventDefault();
     setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
     
