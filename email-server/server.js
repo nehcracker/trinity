@@ -9,12 +9,18 @@ const emailRateLimiter = require("./middlewares/rateLimiter");
 const app = express();
 
 // Replace the simple cors() with a more specific configuration
-app.use(cors({
-    origin: ['https://trinityfinancing.com', 'http://trinityfinancing.com', 'http://localhost:3000'],
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-})); // 🟢 Improved CORS security
+app.use(
+    cors({
+        origin: [
+            "https://trinityfinancing.com",
+            "http://trinityfinancing.com",
+            "http://localhost:3000",
+        ],
+        methods: ["GET", "POST", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: true,
+    })
+); // 🟢 Improved CORS security
 app.use(express.json());
 // app.use(cors({ origin: process.env.ALLOWED_ORIGINS || "*" })); // 🟢 Improved CORS security
 app.use(compression()); // 🟢 Added for response compression
@@ -25,7 +31,8 @@ app.get("/", (req, res) => {
 });
 
 // Email API Route with validation middleware
-app.post("/api/email/contact", 
+app.post(
+    "/api/email/contact",
     emailRateLimiter,
     contactFormValidation,
     validate,
@@ -34,16 +41,16 @@ app.post("/api/email/contact",
 
 // 🟢 Improved Error handling middleware
 app.use((err, req, res, next) => {
-    console.error('❌ Server Error:', err);
+    console.error("❌ Server Error:", err);
     res.status(500).json({
         success: false,
-        message: 'Internal server error',
-        error: process.env.NODE_ENV === 'development' ? err.message : undefined
+        message: "Internal server error",
+        error: process.env.NODE_ENV === "development" ? err.message : undefined,
     });
 });
 
 // 🟢 Graceful Shutdown Handling
-const server = app.listen(process.env.PORT || 5000, () => {
+const server = app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
     console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
 });
 
