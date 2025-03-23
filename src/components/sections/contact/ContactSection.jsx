@@ -258,9 +258,10 @@ const countries = [
 ];
 
 // API URL based on environment
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? `  /api/email/contact  ` 
-  : 'http://localhost:5000/api/email/contact';
+const API_URL = process.env.NODE_ENV === 'production'
+    ? 'https://trinityfinancing.com/api/email/contact'
+    : 'http://localhost:5000/api/email/contact';
+
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
