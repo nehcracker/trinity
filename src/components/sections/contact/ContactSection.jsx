@@ -2,7 +2,7 @@ import React, { useState, } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './ContactSection.css';
-/* global gtag */
+
 
 
 // Comprehensive list of countries for the dropdown
@@ -259,7 +259,7 @@ const countries = [
 
 // API URL based on environment
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? `/api/email/contact` 
+  ? `  /api/email/contact  ` 
   : 'http://localhost:5000/api/email/contact';
 
 const ContactSection = () => {
@@ -294,13 +294,10 @@ const ContactSection = () => {
     }));
   };
 
-const handleSubmit = async (e) => {
-    gtag('event', 'conversion', {'send_to': 'AW-16898712872/T3iGCObq3qwaEKjK9_k-'});
-
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
-    
+  
     try {
       const response = await fetch(API_URL, {
         method: 'POST',
@@ -309,67 +306,68 @@ const handleSubmit = async (e) => {
         },
         body: JSON.stringify(formData),
       });
-      
+  
       // Check if response is JSON or HTML
       const contentType = response.headers.get("content-type");
-      
+  
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
-        
+  
         if (data.success) {
-        setFormStatus({
-          isSubmitting: false,
-          isSubmitted: true,
-          error: null
-        });
-        
-        // Reset form after successful submission
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          city: '',
-          country: '',
-          service: '',
-          subject: '',
-          message: ''
-        });
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setFormStatus(prevState => ({
-            ...prevState,
-            isSubmitted: false
-          }));
-        }, 5000);
-      } else {
+          setFormStatus({
+            isSubmitting: false,
+            isSubmitted: true,
+            error: null,
+          });
+  
+          // Reset form after successful submission
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            city: '',
+            country: '',
+            service: '',
+            subject: '',
+            message: '',
+          });
+  
+          // Reset success message after 5 seconds
+          setTimeout(() => {
+            setFormStatus((prevState) => ({
+              ...prevState,
+              isSubmitted: false,
+            }));
+          }, 5000);
+        } else {
           throw new Error(data.message || 'Unexpected response from server. Please try again.');
         }
       } else {
         // If not JSON, handle HTML or other response formats
+        const text = await response.text();
+        console.error('Non-JSON response:', text); // Log the response for debugging
         throw new Error('Server responded with non-JSON format. Please contact the administrator.');
       }
     } catch (error) {
       console.error('Error response:', error);
-      
+  
       // More detailed error handling
       let errorMessage = 'Failed to send your message. Please try again later.';
-      
+  
       if (error.message.includes('Unexpected token')) {
         errorMessage = 'The server returned an invalid response format. Please contact support.';
       } else if (error.message) {
         errorMessage = error.message;
       }
-      
+  
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
-        error: errorMessage
+        error: errorMessage,
       });
     }
   };
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
