@@ -35,6 +35,8 @@ app.post("/api/email/contact",
 // 🟢 Improved Error handling middleware
 app.use((err, req, res, next) => {
     console.error('❌ Server Error:', err);
+    console.error(err.stack); // Log the error stack for debugging
+
     res.status(500).json({
         success: false,
         message: 'Internal server error',

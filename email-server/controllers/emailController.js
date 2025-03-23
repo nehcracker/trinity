@@ -8,6 +8,7 @@ const sendContactEmail = async (req, res) => {
     // Validate required fields
     if (!firstName || !lastName || !email || !validator.isEmail(email)) {
       return res.status(400).json({ 
+        
         success: false, 
         message: 'First name, last name, and valid email are required' 
       });

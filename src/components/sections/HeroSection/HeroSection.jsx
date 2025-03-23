@@ -136,7 +136,9 @@ const HeroSection = () => {
         >
          Trinity Financial Soliciting Brokers has successfully connected thousands of 
          companies worldwide with leading funding organizations and institutions, securing 
-         low-interest financing with swift processing times.
+         low-interest financing with swift processing times. To date, we have sourced over 
+         <strong> $15 billion in grants, donations, government grants, international development 
+          funds, philanthropic contributions, and corporate social responsibility (CSR) funding.</strong>
         </motion.p>
 
         <motion.div
