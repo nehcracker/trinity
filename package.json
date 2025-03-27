@@ -52,7 +52,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postbuild": "react-snap",
     "generate-sitemap": "node script/generateSitemap.js"
   },
   "eslintConfig": {
@@ -92,7 +91,6 @@
     "eslint": "^8.57.1",
     "eslint-plugin-jest": "^28.11.0",
     "nodemon": "^3.1.9",
-    "react-snap": "^1.23.0",
     "sitemap": "^8.0.0"
   }
 }
