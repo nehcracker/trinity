@@ -259,8 +259,8 @@ const countries = [
 
 // API URL based on environment
 const API_URL = process.env.NODE_ENV === 'production'
-    ? 'https://trinityfinancing.com/api/email/contact'
-    : 'http://localhost:5000/api/email/contact';
+    ? 'https://email-server.nehlmac4.workers.dev/api/email/contact'
+    : 'https://email-server.nehlmac4.workers.dev/api/email/contact'
 
 
 const ContactSection = () => {
