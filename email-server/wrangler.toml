@@ -1,0 +1,11 @@
+name = "email-server"
+main = "src/index.js"
+compatibility_date = "2025-03-21"
+
+[observability]
+enabled = true
+
+[vars]
+ZOHO_EMAIL = "contact@trinityfinancing.com"
+ZOHO_NAME = "Trinity Financing"
+ZOHO_CC_EMAIL = "finance.support@trinityfinancing.com"
