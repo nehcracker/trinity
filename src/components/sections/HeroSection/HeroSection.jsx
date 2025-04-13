@@ -134,14 +134,10 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-         Trinity Financial Soliciting Brokers has successfully connected thousands of companies 
-         and investment groups worldwide with top-tier funding organizations and financial institutions. 
-         We specialize in securing low-interest financing for large-scale real estate developments, 
-         infrastructure projects, and mega business ventures, all with swift processing times. 
-         To date, we have sourced over <strong>$150 billion in international development capital, philanthropic funding, 
-          corporate social responsibility (CSR) financing, and real estate investment funding.</strong> 
-          Our proven expertise spans commercial real estate, industrial projects, construction loans, urban 
-          infrastructure development, and strategic corporate financing, making us a trusted partner in global-scale funding solutions.
+        Trinity Financial Soliciting Brokers connects companies worldwide with top funding institutions, 
+        securing low-interest financing for real estate developments, infrastructure, and mega business 
+        projects—all with fast processing. We've sourced over <strong>$150 billion in international development 
+        funds, philanthropic capital, CSR funds, and real estate investment financing.</strong>
         </motion.p>
 
         <motion.div
