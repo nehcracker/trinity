@@ -528,10 +528,8 @@ const ContactSection = () => {
                       required
                     >
                       <option value="">Select a service</option>
-                      <option value="Governmen-NGO-grants">Government & NGO Grants</option>
-                      <option value="Donations">Donations</option>
                       <option value="Development-Funds">Development Funds</option>
-                      <option value="crowdfunding">Crowdfunding & Grantmaking</option>
+                      <option value="crowdfunding">Crowdfunding</option>
                       <option value="Agri-Business-Financing">Agri-Business Financing</option>
                       <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
                       <option value="Micro-Finance">Micro Financing Services</option>
@@ -611,7 +609,6 @@ const ContactSection = () => {
                   <div className="contact-icon">📧</div>
                   <div className="contact-text">
                     <h4>Email Us today</h4>
-                    <p>contact@trinityfinancing.com</p>
                     <p>finance.support@trinityfinancing.com</p>
                   </div>
                 </div>
