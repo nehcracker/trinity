@@ -56,8 +56,8 @@ const Footer = () => {
               
               <li className="contact-item">
                 <span className="contact-icon">📧</span>
-                <a href="mailto:info@trinityfinancing.com" className="contact-link">
-                  info@trinityfinancing.com
+                <a href="mailto:finance.support@trinityfinancing.com" className="contact-link">
+                finance.support@trinityfinancing.com
                 </a>
               </li>
               <li className="contact-item">
