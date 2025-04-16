@@ -595,6 +595,7 @@ const ContactSection = () => {
                   </div>
                 </div>
 
+                {/* 
                 <div className="contact-info-item">
                   <div className="contact-icon">📞</div>
                   <div className="contact-text">
@@ -604,6 +605,7 @@ const ContactSection = () => {
                     <p>Mon-Fri 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
+                */}
                 
                 <div className="contact-info-item">
                   <div className="contact-icon">📧</div>
