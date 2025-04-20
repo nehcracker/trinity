@@ -264,6 +264,20 @@ const API_URL = process.env.NODE_ENV === 'production'
 
 
 const ContactSection = () => {
+  // Add the gtag_report_conversion function
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) !== 'undefined') {
+        window.location = url;
+      }
+    };
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-16898712872/EJe_CLryhLsaEKjK9_k-',
+      'event_callback': callback
+    });
+    return false;
+  }
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -320,6 +334,9 @@ const ContactSection = () => {
             isSubmitted: true,
             error: null,
           });
+  
+          // Call the conversion tracking function after successful submission
+          gtag_report_conversion();
   
           // Reset form after successful submission
           setFormData({
