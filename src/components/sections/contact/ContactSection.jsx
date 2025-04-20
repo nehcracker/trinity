@@ -272,7 +272,7 @@ const ContactSection = () => {
       }
     };
     window.gtag('event', 'conversion', {
-      'send_to': 'AW-16898712872/EJe_CLryhLsaEKjK9_k-',
+      'send_to': 'AW-16898712872/nV9ECMGRkrsaEKjK9_k-',
       'event_callback': callback
     });
     return false;
