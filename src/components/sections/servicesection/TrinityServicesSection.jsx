@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, ChevronLeft, Briefcase, Globe, Building, TrendingUp, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import styles from './TrinityServicesSection.module.css';
 
 const TrinityServicesSection = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [hoverService, setHoverService] = useState(null);
+
+  const navigate = useNavigate();
   
   // Services data
   const services = [
@@ -113,7 +116,16 @@ const TrinityServicesSection = () => {
                   </ul>
                 </div>
                 <div className={styles.serviceFooter}>
-                  <button className={styles.serviceButton}>Learn More</button>
+                  <button 
+                    className={styles.serviceButton}
+                    onClick={() => {
+                      if (service.id === 2) {
+                        navigate('/tradefinance');
+                      }
+                    }}
+                  >
+                    Learn More
+                  </button>
                 </div>
               </div>
             ))}

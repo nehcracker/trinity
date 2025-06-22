@@ -1,0 +1,77 @@
+/* ProgressIndicator.module.css */
+.progressIndicator {
+  margin-bottom: 2rem;
+}
+
+.progressBar {
+  height: 6px;
+  background-color: #F8F9FA;
+  border-radius: 3px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #4A90E2;
+  border-radius: 3px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progressSteps {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.stepNumber {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F8F9FA;
+  color: #1A2B4C;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.stepTitle {
+  font-size: 0.875rem;
+  color: #1A2B4C;
+  text-align: center;
+  font-weight: 500;
+}
+
+.progressStep.active .stepNumber {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.progressStep.current .stepNumber {
+  background-color: #FF6B35;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+}
+
+@media (max-width: 576px) {
+  .stepTitle {
+    font-size: 0.75rem;
+  }
+  
+  .stepNumber {
+    width: 25px;
+    height: 25px;
+    font-size: 0.875rem;
+  }
+}

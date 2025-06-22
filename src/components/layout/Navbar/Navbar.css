@@ -66,6 +66,21 @@
   display: none;
 }
 
+.trade-finance-button {
+  background-color: #fe6700;
+  color: white;
+  border-radius: 5px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.trade-finance-button:hover {
+  background-color: #e05c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(254, 103, 0, 0.2);
+}
+
 @media (min-width: 768px) {
   .desktop-nav {
     display: flex;
@@ -82,6 +97,7 @@
   text-transform: uppercase;
   font-weight: 500;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
 .nav-link:hover {
@@ -113,6 +129,69 @@
   height: 3px;
 }
 
+/* Dropdown Styles */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-trigger:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  border: 1px solid rgba(254, 103, 0, 0.1);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(254, 103, 0, 0.1);
+  color: #fe6700;
+  transform: translateX(5px);
+}
+
+.dropdown-item.active {
+  background-color: rgba(254, 103, 0, 0.15);
+  color: #fe6700;
+  font-weight: 600;
+}
+
 .contact-button {
   display: inline-block;
   padding: 0.5rem 1.25rem;
@@ -134,8 +213,8 @@
 .mobile-menu-button {
   display: block;
   cursor: pointer;
-  padding: 10px;   /* Added padding for larger touch area */
-  margin: -10px;   /* Negative margin to compensate for padding */
+  padding: 10px;
+  margin: -10px;
 }
 
 @media (min-width: 768px) {
@@ -197,25 +276,26 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.9);  /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.9);
   -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);                 /* Blur effect for depth */
-  border-radius: 0 0 10px 10px;                /* Rounded corners on bottom */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  /* Shadow for depth */
-  margin-top: 10px;                            /* Gap between header and dropdown */
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
 .mobile-nav-link {
-  padding: 16px 20px;                          /* Increased padding for better touch targets */
+  padding: 16px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s ease;
-  color: #333;                                 /* Better contrast for readability */
+  color: #333;
   text-transform: uppercase;
   font-size: 0.9rem;
-  display: block;                              /* Full width for easier tapping */
-  text-align: center;                          /* Centered text */
+  display: block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .navbar.scrolled .mobile-nav-link {
@@ -225,25 +305,80 @@
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
   color: #fe6700;
-  background-color: rgba(254, 103, 0, 0.05);   /* Subtle background on hover/active */
+  background-color: rgba(254, 103, 0, 0.05);
 }
 
 .mobile-nav-link.active {
   font-weight: 600;
 }
 
+/* Mobile Dropdown Styles */
+.mobile-dropdown-container {
+  position: relative;
+}
+
+.mobile-nav-link.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mobile-nav-link .dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-link .dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+  background-color: rgba(254, 103, 0, 0.05);
+  overflow: hidden;
+}
+
+.mobile-dropdown-item {
+  display: block;
+  padding: 12px 20px;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(254, 103, 0, 0.1);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.mobile-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.mobile-dropdown-item:hover {
+  background-color: rgba(254, 103, 0, 0.1);
+  color: #fe6700;
+}
+
+.mobile-dropdown-item.active {
+  background-color: rgba(254, 103, 0, 0.15);
+  color: #fe6700;
+  font-weight: 600;
+}
+
 .mobile-contact-button {
-  margin: 16px 20px;                           /* Changed to margin instead of top-only */
-  padding: 14px 0;                             /* Increased padding for better touch target */
+  margin: 16px 20px;
+  padding: 14px 0;
   background-color: #fe6700;
   color: white;
   border-radius: 5px;
-  font-weight: 600;                            /* Slightly bolder */
+  font-weight: 600;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  display: block;                              /* Full width for easier tapping */
-  box-shadow: 0 4px 8px rgba(254, 103, 0, 0.2); /* Shadow for depth */
+  display: block;
+  box-shadow: 0 4px 8px rgba(254, 103, 0, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -251,23 +386,22 @@
 .mobile-contact-button:active,
 .mobile-contact-button.active {
   background-color: #e05c00;
-  transform: translateY(-2px);                 /* Subtle lift effect on hover */
+  transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(254, 103, 0, 0.3);
 }
 
 /* Touch-friendly adjustments for mobile */
 @media (max-width: 767px) {
   .navbar-container {
-    width: 95%;                                /* Slightly wider container on mobile */
+    width: 95%;
   }
   
   .hamburger {
-    width: 28px;                               /* Slightly smaller hamburger */
+    width: 28px;
   }
   
-  /* Ensure the mobile menu has good spacing on smaller screens */
   .mobile-nav {
-    max-height: 70vh;                          /* Prevent menu from being too tall */
-    overflow-y: auto;                          /* Allow scrolling if needed */
+    max-height: 70vh;
+    overflow-y: auto;
   }
 }

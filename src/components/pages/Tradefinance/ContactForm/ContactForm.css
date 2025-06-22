@@ -1,0 +1,122 @@
+/* ContactForm.css */
+.contact-form-container {
+  max-width: auto;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+.form-content {
+  min-height: 380px;
+  margin: 2rem 0;
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #F8F9FA;
+}
+
+.primary-button {
+  background-color: #FF6B35;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.primary-button:hover {
+  background-color: #e55a27;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.primary-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: #1A2B4C;
+  border: 1px solid #1A2B4C;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.secondary-button:hover {
+  background-color: rgba(26, 43, 76, 0.05);
+}
+
+.secondary-button:disabled {
+  border-color: #cccccc;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.form-error {
+  color: #DC3545;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  background-color: rgba(220, 53, 69, 0.1);
+  border-radius: 4px;
+}
+
+.success-screen {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background-color: #28A745;
+  color: white;
+  font-size: 36px;
+  border-radius: 50%;
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form-container {
+    padding: 1.5rem;
+  }
+  
+  .form-navigation {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+  
+  .primary-button, .secondary-button {
+    width: 100%;
+  }
+}

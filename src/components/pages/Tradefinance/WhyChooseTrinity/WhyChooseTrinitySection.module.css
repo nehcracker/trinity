@@ -1,0 +1,173 @@
+/* src/components/sections/WhyChooseTrinitySection.module.css */
+
+.whyChooseSection {
+  padding: 5rem 1.5rem;
+  background-color: var(--light-gray, #F8F9FA);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--dark-navy, #1A2B4C);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.125rem;
+  color: #4a5568;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.6;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+.benefitCard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.benefitCard.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.benefitCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.iconContainer {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.iconBackground {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--light-gray, #F8F9FA);
+  z-index: 0;
+}
+
+.benefitIcon {
+  font-size: 2.5rem;
+  z-index: 1;
+}
+
+.clockIcon {
+  color: var(--primary-orange, #FF6B35);
+}
+
+.clockIcon.animate {
+  animation: tickTock 2s ease-in-out infinite;
+}
+
+.globeIcon {
+  color: var(--primary-blue, #4A90E2);
+}
+
+.globeIcon.animate {
+  animation: rotate 8s linear infinite;
+}
+
+.expertIcon {
+  color: var(--dark-navy, #1A2B4C);
+}
+
+.expertIcon.animate {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.benefitTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--dark-navy, #1A2B4C);
+}
+
+.benefitDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+/* Animations */
+@keyframes tickTock {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefitCard:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  
+  .benefitCard:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .benefitCard:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+}
+
+/* Staggered animation timing for cards */
+.benefitCard:nth-child(1) {
+  transition-duration: 0.5s;
+}
+
+.benefitCard:nth-child(2) {
+  transition-duration: 0.6s;
+}
+
+.benefitCard:nth-child(3) {
+  transition-duration: 0.7s;
+}

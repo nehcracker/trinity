@@ -1,0 +1,374 @@
+/* DocumentsSection.module.css */
+
+.documentsSection {
+  padding: 5rem 1.5rem;
+  background-color: #f8fafc; /* Light neutral background */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #1d4ed8; /* Primary blue */
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #475569; /* Neutral gray */
+}
+
+.documentsContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.documentsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.documentCard {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.documentCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.documentCard.optional {
+  border: 1px dashed #cbd5e1; /* Light gray border */
+  background-color: #f8fafc; /* Lighter background for optional */
+}
+
+.documentIcon {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(37, 99, 235, 0.1); /* Light blue background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.documentIcon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #2563eb; /* Primary blue */
+}
+
+.documentContent {
+  flex: 1;
+}
+
+.documentName {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: justify;
+  font-weight: 600;
+  color: #1e293b; /* Dark neutral */
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.optionalTag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #dbeafe; /* Very light blue */
+  color: #2563eb; /* Primary blue */
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.documentDescription {
+  font-size: 0.875rem;
+  text-align: justify;
+  color: #64748b; /* Medium neutral */
+  line-height: 1.5;
+}
+
+.documentsTips {
+  padding: 1.5rem;
+}
+
+.tipCard {
+  background-color: #fffbeb; /* Very light amber */
+  border-left: 4px solid #f59e0b; /* Amber accent */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.tipTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #92400e; /* Dark amber */
+  margin-bottom: 1rem;
+}
+
+.tipsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: justify;
+}
+
+.tipsList li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #78350f; /* Very dark amber */
+  line-height: 1.5;
+}
+
+.tipsList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #f59e0b; /* Amber */
+  border-radius: 50%;
+}
+
+.additionalInfo {
+  text-align: center;
+  text-align: justify;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #475569; /* Neutral gray */
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contactLink {
+  background: none;
+  border: none;
+  color: #2563eb; /* Primary blue */
+  font-weight: 600;
+  padding: 0 0.25rem;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+}
+
+.contactLink:hover {
+  color: #1d4ed8; /* Darker primary blue */
+}
+
+/* Fully responsive design with multiple breakpoints */
+@media (max-width: 1200px) {
+  .documentsContainer {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .documentsContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .documentsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .documentsTips {
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .documentsList {
+    grid-template-columns: 1fr;
+  }
+  
+  .documentsSection {
+    padding: 4rem 1.25rem;
+  }
+}
+
+/* Small mobile optimization */
+@media (max-width: 480px) {
+  .documentCard {
+    padding: 1.25rem;
+  }
+  
+  .documentIcon {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .documentName {
+    font-size: 1rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .documentsSection {
+    padding: 3rem 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .documentCard {
+    flex-direction: column;
+  }
+  
+  .documentIcon {
+    margin-bottom: 0.75rem;
+    margin-right: 0;
+  }
+  
+  .optionalTag {
+    font-size: 0.7rem;
+  }
+}
+
+/* Print optimization */
+@media print {
+  .documentsSection {
+    background-color: white;
+    padding: 1rem 0;
+  }
+  
+  .documentCard {
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+    break-inside: avoid;
+  }
+  
+  .documentCard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .tipCard {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #f59e0b;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .documentsSection {
+    background-color: #1e293b;
+  }
+  
+  .title {
+    color: #3b82f6;
+  }
+  
+  .subtitle {
+    color: #cbd5e1;
+  }
+  
+  .documentCard {
+    background-color: #0f172a;
+  }
+  
+  .documentCard.optional {
+    border-color: #334155;
+    background-color: #1e293b;
+  }
+  
+  .documentName {
+    color: #e2e8f0;
+  }
+  
+  .documentDescription {
+    color: #94a3b8;
+  }
+  
+  .optionalTag {
+    background-color: #1e40af;
+    color: #93c5fd;
+  }
+  
+  .tipCard {
+    background-color: #422006;
+    border-left-color: #f59e0b;
+  }
+  
+  .tipTitle {
+    color: #fbbf24;
+  }
+  
+  .tipsList li {
+    color: #fcd34d;
+  }
+  
+  .additionalInfo {
+    color: #cbd5e1;
+  }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .documentCard {
+    border: 1px solid CanvasText;
+  }
+  
+  .optionalTag {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Screen orientation changes */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .documentsSection {
+    padding: 2rem 1.5rem;
+  }
+  
+  .header {
+    margin-bottom: 1.5rem;
+  }
+}

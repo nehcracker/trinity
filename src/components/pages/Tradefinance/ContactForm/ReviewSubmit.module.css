@@ -1,0 +1,211 @@
+.reviewContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  color: #1A2B4C;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.sectionDescription {
+  color: #5D6B7B;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.reviewSection {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #F8F9FA;
+  padding-bottom: 1.5rem;
+}
+
+.reviewSection h3 {
+  color: #4A90E2;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.servicesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  background-color: #F8F9FA;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #1A2B4C;
+}
+
+.serviceIcon {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  color: #FF6B35;
+  font-size: 1.25rem;
+}
+
+.twoColumnLayout {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.column {
+  flex: 1;
+}
+
+.detailItem {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 600;
+  color: #5D6B7B;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.value {
+  color: #1A2B4C;
+  font-size: 1rem;
+}
+
+.submitForm {
+  margin-top: 2rem;
+}
+
+.checkboxContainer {
+  margin-bottom: 1.5rem;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.checkboxGroup input[type="checkbox"] {
+  margin-right: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.checkboxGroup label {
+  font-size: 0.9rem;
+  color: #1A2B4C;
+}
+
+.checkboxGroup a {
+  color: #4A90E2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.checkboxGroup a:hover {
+  text-decoration: underline;
+}
+
+.turnstileContainer {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.backButton {
+  background-color: #F8F9FA;
+  color: #1A2B4C;
+  border: 1px solid #D1D9E6;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #EAEEF2;
+}
+
+.submitButton {
+  background-color: #FF6B35;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #E85A24;
+}
+
+.submitButton:disabled {
+  background-color: #FFB59F;
+  cursor: not-allowed;
+}
+
+.loadingSpinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #FFFFFF;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .twoColumnLayout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .reviewContainer {
+    padding: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}

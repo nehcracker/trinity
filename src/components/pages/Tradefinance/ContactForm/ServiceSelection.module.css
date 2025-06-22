@@ -1,0 +1,125 @@
+/* ServiceSelection.module.css */
+.serviceSelection {
+  background-color: #f7f7f7;
+  padding: 20px;
+  
+  /* Container styles if needed */
+}
+
+.title {
+  color: #1A2B4C;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.stepDescription {
+  color: #6c757d;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.serviceCard {
+  background-color: #fff;
+  border: 2px solid #F8F9FA;
+  border-radius: 10px;
+  padding: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-color: #4A90E2;
+}
+
+.serviceCard.selected {
+  border-color: #FF6B35;
+  background-color: rgba(255, 107, 53, 0.05);
+}
+
+.serviceIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.serviceCard h3 {
+  color: #1A2B4C;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.serviceCard p {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.serviceCheckbox {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceCard.selected .serviceCheckbox {
+  border-color: #FF6B35;
+  background-color: #FF6B35;
+}
+
+.checkboxInner {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 2px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+.serviceCard.selected .checkboxInner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.errorMessage {
+  color: #DC3545;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+}
