@@ -32,7 +32,7 @@ const CTASection = () => {
               Apply for Financing
             </button>
             <div className={styles.secondaryActions}>
-              <a href="#" className={styles.secondaryLink}>Schedule a Consultation</a>
+              <button className={styles.secondaryLink}>Schedule a Consultation</button>
               <span className={styles.divider}>or</span>
               <a href="tel:+1234567890" className={styles.phoneLink}>
                 <svg className={styles.phoneIcon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
