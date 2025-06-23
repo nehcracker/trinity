@@ -12,7 +12,7 @@ const Tradefinance = () => {
       <Helmet>
         <title>Trade Finance Services | Bank Instrument Merchant | Financial broker </title>
         <meta name="description" content="Secure, efficient financial instruments to power your international trade and business expansion" />
-        <meta name="keywords" content="Trade Finance Services, bank guarantee,LC, Bank Comfort Letter, SBLC, letter of credit, Surety bond, trade finance, international trade, business expansion" />
+        <meta name="keywords" content="Trade Finance Services, bank guarantee, LC, Bank Comfort Letter, SBLC, letter of credit, Surety bond, trade finance, international trade, business expansion" />
         <meta name="author" content="Trinity financing" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#000000" />
