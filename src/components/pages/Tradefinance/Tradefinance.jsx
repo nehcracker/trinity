@@ -10,14 +10,15 @@ const Tradefinance = () => {
   return (
     <>
       <Helmet>
-        <title>Trade Finance Services | Bank Instrument | Trinity Financing</title>
+        <title>Trade Finance Services | Bank Instrument Merchant | Financial broker </title>
         <meta name="description" content="Secure, efficient financial instruments to power your international trade and business expansion" />
-        <meta name="keywords" content="Trade Finance Services, bank guarantee, letter of credit, Surety bond, trade finance, international trade, business expansion" />
-        <meta name="author" content="Trinity" />
+        <meta name="keywords" content="Trade Finance Services, bank guarantee,LC, Bank Comfort Letter, SBLC, letter of credit, Surety bond, trade finance, international trade, business expansion" />
+        <meta name="author" content="Trinity financing" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="canonical" href='https://trinityfinancing.com' />
+        <meta property="og:image" content="https://trinityfinancing.com/micro-finance.jpg" />
       </Helmet>
       <div>
         <HeroSection />

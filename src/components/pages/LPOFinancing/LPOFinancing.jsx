@@ -13,7 +13,7 @@ import CTASection from './CTASection/CTASection';
 const LPOFinancing = () => {
   return (
     <div className={styles.container}>
-      {/* SEO Meta Tags would be handled by a helmet component in a real implementation */}
+      
       
       {/* Main content sections */}
       <HeroSectionLPO />
