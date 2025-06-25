@@ -1,0 +1,39 @@
+/* File: PrivacyPolicy.css */
+
+.privacy-policy-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #2d3748;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.privacy-policy-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.privacy-policy-container h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.privacy-policy-container p,
+.privacy-policy-container li {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.privacy-policy-container ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.privacy-policy-container a {
+  color: #3182ce;
+  text-decoration: underline;
+}

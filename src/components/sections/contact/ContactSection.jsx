@@ -545,13 +545,12 @@ const ContactSection = () => {
                       required
                     >
                       <option value="">Select a service</option>
-                      <option value="Development-Funds">Development Funds</option>
-                      <option value="Agri-Business-Financing">Agri-Business Financing</option>
-                      <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
-                      <option value="Micro-Finance">Micro Financing Services</option>
-                      <option value="Business-Loans">Business Loans</option>
                       <option value="Real-Estate">Real Estate Financing</option>
                       <option value="Project-Financing">Project Financing</option>
+                      <option value="Business-Loans">Working Capital Capital</option>
+                      <option value="Development-Funds">Equity Financing</option>
+                      <option value="Agri-Business-Financing">Agri-Business Financing</option>
+                      <option value="Micro-Finance">Non-recourse financing</option>
                     </select>
                   </div>
 
