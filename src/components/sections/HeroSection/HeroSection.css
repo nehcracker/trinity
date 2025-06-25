@@ -112,7 +112,7 @@
 }
 
 .primary-button1:hover {
-    background: linear-gradient(135deg, white, #f8f8f8);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0), #f8f8f800);
     color: #fe6700;
     border-color: #fe6700;
     box-shadow: 0 8px 25px rgba(254, 103, 0, 0.4);
