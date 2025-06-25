@@ -75,7 +75,7 @@ const Footer = () => {
             &copy; {year} Trinity Financing Agent. All Rights Reserved.
           </p>
           <div className="legal-links">
-            <a href="/privacy" className="legal-link">Privacy Policy</a>
+            <a href="/privacypolicy" className="legal-link">Privacy Policy</a>
             <a href="/terms" className="legal-link">Terms of Service</a>
           </div>
         </div>

@@ -8,6 +8,7 @@ import Home from './components/pages/Home/Home';
 import Tradefinance from './components/pages/Tradefinance/Tradefinance';
 import LPOFinancing from './components/pages/LPOFinancing/LPOFinancing';
 import ContactForm from './components/pages/Tradefinance/ContactForm/ContactForm';
+import PrivacyPolicy from './components/pages/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/tradefinance" element={<Tradefinance />} />
           <Route path="/LPOFinancing" element={<LPOFinancing />} />
           <Route path="/contactform" element={<ContactForm />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy /> } />
         </Routes>
         <Footer />
       </div>
