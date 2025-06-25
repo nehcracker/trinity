@@ -29,8 +29,8 @@ const services = [
     icon: '📃'
   },
   {
-    id: 'proof-of-funds',
-    title: 'Proof of Funds',
+    id: 'Surety-Bonds',
+    title: 'surety bonds',
     description: 'Bank statements, account verification',
     icon: '💰'
   },

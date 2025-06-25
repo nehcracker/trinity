@@ -546,13 +546,12 @@ const ContactSection = () => {
                     >
                       <option value="">Select a service</option>
                       <option value="Development-Funds">Development Funds</option>
-                      <option value="crowdfunding">Crowdfunding</option>
                       <option value="Agri-Business-Financing">Agri-Business Financing</option>
                       <option value="No-Guarantee-Loans">No-Guarantee Loans</option>
                       <option value="Micro-Finance">Micro Financing Services</option>
                       <option value="Business-Loans">Business Loans</option>
                       <option value="Real-Estate">Real Estate Financing</option>
-                      <option value="other-Services">Other Services</option>
+                      <option value="Project-Financing">Project Financing</option>
                     </select>
                   </div>
 
