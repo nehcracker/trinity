@@ -140,7 +140,7 @@ const ReviewSubmit = ({
                 required
               />
               <label htmlFor="privacyAccepted">
-                I acknowledge the <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>*
+                I acknowledge the <a href="/privacypolicy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>*
               </label>
             </div>
 

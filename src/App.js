@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import './App.css';
 
 import Navbar from './components/layout/Navbar/Navbar';
@@ -12,19 +13,21 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tradefinance" element={<Tradefinance />} />
-          <Route path="/LPOFinancing" element={<LPOFinancing />} />
-          <Route path="/contactform" element={<ContactForm />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy /> } />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tradefinance" element={<Tradefinance />} />
+            <Route path="/LPOFinancing" element={<LPOFinancing />} />
+            <Route path="/contactform" element={<ContactForm />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy /> } />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 
