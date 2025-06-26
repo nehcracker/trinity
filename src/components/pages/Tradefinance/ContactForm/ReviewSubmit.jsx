@@ -26,11 +26,6 @@ const ReviewSubmit = ({
     marketingOptIn
   } = formData;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   const formatServices = () => {
     return selectedServices.map(service => (
       <div key={service} className={styles.serviceItem}>
@@ -119,7 +114,7 @@ const ReviewSubmit = ({
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.submitForm}>
+        <div className={styles.submitForm}>
           <div className={styles.checkboxContainer}>
             <div className={styles.checkboxGroup}>
               <input
@@ -164,29 +159,7 @@ const ReviewSubmit = ({
           </div>
 
           <div className={styles.turnstileContainer} ref={turnstileRef}></div>
-
-          <div className={styles.formActions}>
-            <button 
-              type="button" 
-              className={styles.backButton}
-              onClick={onBack}
-            >
-              Back
-            </button>
-            <button 
-              type="submit" 
-              className={styles.submitButton}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? (
-                <span className={styles.loadingSpinner}>
-                  <span className={styles.spinner}></span>
-                  Submitting...
-                </span>
-              ) : 'Submit Application'}
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </>
   );
