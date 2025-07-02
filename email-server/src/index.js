@@ -50,14 +50,14 @@ app.post(
           },
           body: JSON.stringify({
             from: {
-              address: c.env.ZOHO_EMAIL,
-              name: c.env.ZOHO_NAME,
+              address: email,
+              name: firstName + " " + lastName,
             },
             to: [
               {
                 email_address: {
                   address: c.env.ZOHO_EMAIL,
-                  name: "Admin",
+                  name: c.env.ZOHO_NAME,
                 },
               },
             ],
