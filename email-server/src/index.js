@@ -2,7 +2,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { lpoValidation } from "./middlewares/validation-lpo";
-const emailRateLimiter = require("./middlewares/rateLimiter");
+// const emailRateLimiter = require("./middlewares/rateLimiter");
 const { validateContactForm } = require("./middlewares/validation");
 const { getTemplate } = require("./controllers/emailController");
 
@@ -30,7 +30,6 @@ app.get("/", (c) => {
 
 app.post(
   "/api/email/contact",
-  emailRateLimiter,
   validateContactForm,
   async (c) => {
     const { adminTemplate, clientTemplate } = await getTemplate(c);
@@ -50,8 +49,8 @@ app.post(
           },
           body: JSON.stringify({
             from: {
-              address: email,
-              name: firstName + " " + lastName,
+              address: c.env.ZOHO_EMAIL,
+                  name: c.env.ZOHO_NAME,
             },
             to: [
               {
@@ -145,7 +144,6 @@ app.post(
 
 app.post(
   "/api/email/lpo-financing",
-  emailRateLimiter,
   lpoValidation,
   async (c) => {
     const { adminTemplate, clientTemplate } = await getTemplate(c);
@@ -165,8 +163,8 @@ app.post(
           },
           body: JSON.stringify({
             from: {
-              address: email,
-              name: contactPerson + " from " + companyName
+              address: c.env.ZOHO_EMAIL,
+                  name: c.env.ZOHO_NAME,
             },
             to: [
               {
