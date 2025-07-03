@@ -44,13 +44,14 @@ const services = [
 
 function ServiceSelection({ selectedServices, dispatch, errors }) {
   const toggleService = (serviceId) => {
+    // Enforce single selection: if clicked service is already selected, deselect it; otherwise select only this service
     const isSelected = selectedServices.includes(serviceId);
     let updatedServices;
     
     if (isSelected) {
-      updatedServices = selectedServices.filter(id => id !== serviceId);
+      updatedServices = [];
     } else {
-      updatedServices = [...selectedServices, serviceId];
+      updatedServices = [serviceId];
     }
     
     dispatch({ 

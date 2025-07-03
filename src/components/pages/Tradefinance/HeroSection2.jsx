@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './HeroSection2.module.css';
 
 const HeroSection = () => {
   const [yearsCount, setYearsCount] = useState(0);
   const [clientsCount, setClientsCount] = useState(0);
   const [transactionsCount, setTransactionsCount] = useState(0);
+  const heroRef = useRef(null);
 
   // Animated counter effect
   useEffect(() => {
@@ -51,8 +52,14 @@ const HeroSection = () => {
     }
   };
 
+  useEffect(() => {
+    if (heroRef.current) {
+      heroRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
   return (
-    <section className={styles.heroContainer}>
+    <section ref={heroRef} className={styles.heroContainer}>
       <div 
         className={styles.backgroundImage}
         style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/images/Tradefinance.png'})` }}

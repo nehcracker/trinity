@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './HeroSectionLPO.module.css';
 
 const HeroSectionLPO = () => {
   const navigate = useNavigate();
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    if (heroRef.current) {
+      heroRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
   return (
     <section
+      ref={heroRef}
       className={styles.heroSection}
       aria-label="Hero section"
       style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/images/LPOFinancing.png'})` }}
