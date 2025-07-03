@@ -143,7 +143,7 @@ const HeroSection = () => {
           </motion.h2>
 
           <motion.p 
-            className="hero-subtitle"
+            className="hero-subtitle1"
             variants={animationVariants.subtitle}
             initial="hidden"
             animate="visible"
