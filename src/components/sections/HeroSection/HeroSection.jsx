@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import Helmet from 'helmet';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-scroll';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import Button from '../../common/Button/Button';
