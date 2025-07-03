@@ -550,7 +550,7 @@ const ContactSection = () => {
                       <option value="Working Capital">Working Capital</option>
                       <option value="Equity Financing">Equity Financing</option>
                       <option value="Agri-Business Financing">Agri-Business Financing</option>
-                      <option value="Non-Recourse Financing">Non-Fecourse Financing</option>
+                      <option value="Non-Recourse Financing">Non-Recourse Financing</option>
                     </select>
                   </div>
 
