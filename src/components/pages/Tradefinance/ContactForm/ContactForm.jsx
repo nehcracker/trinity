@@ -86,7 +86,7 @@ function formReducer(state, action) {
         isSubmitting: false,
         errors: {
           ...state.errors,
-          form: "There was an error submitting the form. Please try again.",
+          form: action.errorMessage || "There was an error submitting the form. Please try again.",
         },
       };
     default:
@@ -97,6 +97,60 @@ function formReducer(state, action) {
 function ContactForm() {
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
 
+  const validateTransactionAmount = (selectedServices, transactionAmount) => {
+    if (!transactionAmount || transactionAmount.trim() === "") {
+      return "Transaction amount is required";
+    }
+
+    // Remove any non-numeric characters except decimal point
+    const cleanAmount = transactionAmount.replace(/[^0-9.-]+/g, '');
+    const amount = parseFloat(cleanAmount);
+
+    if (isNaN(amount) || amount <= 0) {
+      return "Please enter a valid transaction amount";
+    }
+
+    // Define service categories with their minimum amounts
+    const lpoServices = [
+      "LOCAL PURCHASE ORDER (LPO) FINANCING", 
+      "contract financing",
+      "lpo financing",
+      "lpo-financing"
+    ];
+    
+    const highValueServices = [
+      "bank guarantee", 
+      "trade finance", 
+      "SBLC", 
+      "LC",
+      "standby letter of credit",
+      "letter of credit"
+    ];
+
+    // Convert selected services to lowercase for comparison
+    const selectedLower = selectedServices.map(s => s.toLowerCase());
+
+    // Check for high-value services first (higher minimum)
+    const hasHighValueService = highValueServices.some(service => 
+      selectedLower.some(selected => selected.includes(service.toLowerCase()))
+    );
+
+    // Check for LPO services
+    const hasLpoService = lpoServices.some(service => 
+      selectedLower.some(selected => selected.includes(service.toLowerCase()))
+    );
+
+    if (hasHighValueService && amount < 1000000) {
+      return "Bank guarantee, trade finance, SBLC, and LC require a minimum of $1,000,000 USD";
+    }
+
+    if (hasLpoService && amount < 100000) {
+      return "LPO financing and contract financing require a minimum of $100,000 USD";
+    }
+
+    return null;
+  };
+
   const validateStep = (step) => {
     const errors = {};
 
@@ -105,17 +159,31 @@ function ContactForm() {
         errors.selectedServices = "Please select at least one service";
       }
     } else if (step === 2) {
+      // Basic field validation
       if (!formState.companyName.trim())
         errors.companyName = "Company name is required";
       if (!formState.contactPerson.trim())
         errors.contactPerson = "Contact person is required";
-      if (!formState.email.trim()) errors.email = "Email is required";
-      else if (!/\S+@\S+\.\S+/.test(formState.email))
-        errors.email = "Email is invalid";
+      
+      // Email validation
+      if (!formState.email.trim()) {
+        errors.email = "Email is required";
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
+        errors.email = "Please enter a valid email address";
+      }
+      
       if (!formState.phone.trim()) errors.phone = "Phone number is required";
       if (!formState.country) errors.country = "Country is required";
-      if (!formState.transactionAmount)
-        errors.transactionAmount = "Transaction amount is required";
+      
+      // Transaction amount validation with minimum amount checks
+      const amountError = validateTransactionAmount(
+        formState.selectedServices, 
+        formState.transactionAmount
+      );
+      if (amountError) {
+        errors.transactionAmount = amountError;
+      }
+      
       if (!formState.currency) errors.currency = "Currency is required";
       if (!formState.timeline) errors.timeline = "Timeline is required";
       if (!formState.description.trim())
@@ -166,18 +234,40 @@ function ContactForm() {
       );
 
       if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}`);
+        let errorMessage = "There was an error submitting the form. Please try again.";
+        
+        switch (response.status) {
+          case 400:
+            errorMessage = "Please check your form data and try again.";
+            break;
+          case 429:
+            errorMessage = "Too many requests. Please wait a moment and try again.";
+            break;
+          case 500:
+            errorMessage = "Server error. Please try again later.";
+            break;
+          case 503:
+            errorMessage = "Service temporarily unavailable. Please try again later.";
+            break;
+          default:
+            errorMessage = `Server error (${response.status}). Please try again.`;
+        }
+        
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
       if (!result.success) {
-        throw new Error(result.message || "Unknown error");
+        throw new Error(result.message || "Form submission failed");
       }
 
       dispatch({ type: "SUBMIT_SUCCESS" });
     } catch (error) {
       console.error("Form submission error:", error.message);
-      dispatch({ type: "SUBMIT_ERROR" });
+      dispatch({ 
+        type: "SUBMIT_ERROR", 
+        errorMessage: error.message 
+      });
     }
   };
 
@@ -222,8 +312,8 @@ function ContactForm() {
     <section id="contact-form">
       {formState.formSubmitted ? (
         <div className="contact-form-container">
-          <div className="success-screen">
-            <div className="success-icon">✓</div>
+          <div className="success-screen" role="status" aria-live="polite">
+            <div className="success-icon" aria-hidden="true">✓</div>
             <h2>Thank You!</h2>
             <p>Your inquiry has been successfully submitted.</p>
             <p>
@@ -232,6 +322,7 @@ function ContactForm() {
             <button
               className="primary-button"
               onClick={() => window.location.reload()}
+              aria-label="Submit another inquiry"
             >
               Submit Another Inquiry
             </button>
@@ -245,7 +336,9 @@ function ContactForm() {
               totalSteps={3}
             />
 
-            <div className="form-content">{renderStep()}</div>
+            <div className={`form-content ${formState.isSubmitting ? 'submitting' : ''}`}>
+              {renderStep()}
+            </div>
 
             <div className="form-navigation">
               {formState.currentStep > 1 && (
@@ -254,8 +347,9 @@ function ContactForm() {
                   className="secondary-button"
                   onClick={handlePrevStep}
                   disabled={formState.isSubmitting}
+                  aria-label="Go back to previous step"
                 >
-                  Back
+                  <span aria-hidden="true">←</span> Back
                 </button>
               )}
 
@@ -264,22 +358,33 @@ function ContactForm() {
                   type="button"
                   className="primary-button"
                   onClick={handleNextStep}
+                  aria-label="Continue to next step"
                 >
-                  Continue
+                  Continue <span aria-hidden="true">→</span>
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="primary-button"
+                  className={`primary-button ${formState.isSubmitting ? 'loading' : ''}`}
                   disabled={formState.isSubmitting}
+                  aria-label={formState.isSubmitting ? "Submitting form" : "Submit inquiry"}
                 >
+                  {formState.isSubmitting && (
+                    <span className="loading-spinner" aria-hidden="true"></span>
+                  )}
                   {formState.isSubmitting ? "Submitting..." : "Submit Inquiry"}
                 </button>
               )}
             </div>
 
             {formState.errors.form && (
-              <div className="form-error">{formState.errors.form}</div>
+              <div 
+                className="form-error" 
+                role="alert"
+                aria-live="polite"
+              >
+                {formState.errors.form}
+              </div>
             )}
           </form>
         </div>

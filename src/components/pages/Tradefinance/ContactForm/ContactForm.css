@@ -12,6 +12,12 @@
 .form-content {
   min-height: 380px;
   margin: 2rem 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-content.submitting {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .form-navigation {
@@ -31,9 +37,14 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
 }
 
-.primary-button:hover {
+.primary-button:hover:not(:disabled) {
   background-color: #e55a27;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
@@ -42,6 +53,15 @@
 .primary-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.primary-button.loading {
+  cursor: not-allowed;
+}
+
+.primary-button.loading:hover {
   transform: none;
   box-shadow: none;
 }
@@ -55,9 +75,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
 }
 
-.secondary-button:hover {
+.secondary-button:hover:not(:disabled) {
   background-color: rgba(26, 43, 76, 0.05);
 }
 
@@ -67,18 +91,45 @@
   cursor: not-allowed;
 }
 
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .form-error {
   color: #DC3545;
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   margin-top: 1rem;
   text-align: center;
   background-color: rgba(220, 53, 69, 0.1);
-  border-radius: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  font-size: 0.9rem;
+}
+
+.field-error {
+  color: #DC3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
 }
 
 .success-screen {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 2rem;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .success-icon {
@@ -106,6 +157,46 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form input styling for better user experience */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  background-color: #ffffff;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #FF6B35;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}
+
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  border-color: #DC3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
   .contact-form-container {
     padding: 1.5rem;
@@ -118,5 +209,34 @@
   
   .primary-button, .secondary-button {
     width: 100%;
+    min-width: auto;
+  }
+  
+  .success-screen {
+    padding: 2rem 1rem;
+  }
+  
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+}
+
+/* Focus visible for better accessibility */
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+}
+
+/* Improved button spacing */
+.form-navigation button + button {
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .form-navigation button + button {
+    margin-left: 0;
   }
 }
