@@ -10,6 +10,7 @@ import Tradefinance from './components/pages/Tradefinance/Tradefinance';
 import LPOFinancing from './components/pages/LPOFinancing/LPOFinancing';
 import ContactForm from './components/pages/Tradefinance/ContactForm/ContactForm';
 import PrivacyPolicy from './components/pages/PrivacyPolicy/PrivacyPolicy';
+import ScrollPopup from './components/common/Popup/ScrollPopup';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/contactform" element={<ContactForm />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy /> } />
           </Routes>
+          <ScrollPopup />
           <Footer />
         </div>
       </Router>

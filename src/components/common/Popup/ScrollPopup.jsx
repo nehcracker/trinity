@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './ScrollPopup.css';
 
 const ScrollPopup = () => {
+  const location = useLocation();
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
 
   useEffect(() => {
-    // Check if popup has already been shown this session
-    const popupShown = sessionStorage.getItem('trinityPopupShown');
-    if (popupShown) {
-      setHasShown(true);
-      return;
-    }
+    // Reset popup closed state on page change
+    setIsClosed(false);
+    setIsVisible(false);
+  }, [location]);
 
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
       
-      if (scrollPercentage >= 25 && !hasShown) {
+      if (scrollPercentage >= 25 && !isClosed) {
         setIsVisible(true);
-        setHasShown(true);
-        sessionStorage.setItem('trinityPopupShown', 'true');
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasShown]);
+  }, [isClosed]);
 
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === 'Escape' && isVisible) {
         setIsVisible(false);
+        setIsClosed(true);
       }
     };
 
@@ -47,10 +47,12 @@ const ScrollPopup = () => {
 
   const handleClose = () => {
     setIsVisible(false);
+    setIsClosed(true);
   };
 
   const handleContactClick = () => {
     setIsVisible(false);
+    setIsClosed(true);
     // Scroll to contact form (assuming it has id="contact-form")
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
