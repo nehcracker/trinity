@@ -1,0 +1,277 @@
+/* ScrollPopup.css */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  margin: 20px;
+  animation: slideUp 0.4s ease-out;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #f5f5f5;
+  color: #FF6B35;
+}
+
+.popup-content {
+  padding: 30px;
+}
+
+.popup-title {
+  color: #FF6B35;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+.popup-subtitle {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.threshold-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.threshold-list li {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border-left: 4px solid #1d4ed8;
+  font-size: 15px;
+}
+
+.warning-text {
+  color: #d97706;
+  font-size: 14px;
+  margin: 20px 0;
+  padding: 12px;
+  background: #fef3c7;
+  border-radius: 6px;
+  border-left: 4px solid #f59e0b;
+}
+
+.not-provided-section {
+  margin: 25px 0;
+  padding: 20px;
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 4px solid #ef4444;
+}
+
+.not-provided-title {
+  color: #dc2626;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.not-provided-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.not-provided-list li {
+  color: #7f1d1d;
+  font-size: 14px;
+  margin-bottom: 6px;
+  padding: 6px 0;
+}
+
+.submission-guidelines {
+  margin: 25px 0;
+  padding: 20px;
+  background: #f0f9ff;
+  border-radius: 8px;
+  border-left: 4px solid #1d4ed8;
+}
+
+.guidelines-title {
+  color: #1d4ed8;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.guidelines-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guidelines-list li {
+  color: #1e40af;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding: 6px 0;
+  position: relative;
+  padding-left: 16px;
+}
+
+.guidelines-list li:before {
+  content: "•";
+  color: #1d4ed8;
+  position: absolute;
+  left: 0;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #FF6B35, #e55a2b);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #e55a2b, #d14d1f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .popup-container {
+    width: 95%;
+    max-height: 85vh;
+    margin: 10px;
+  }
+  
+  .popup-content {
+    padding: 20px;
+  }
+  
+  .popup-title {
+    font-size: 18px;
+  }
+  
+  .popup-subtitle {
+    font-size: 15px;
+  }
+  
+  .threshold-list li {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-container {
+    width: 98%;
+    max-height: 90vh;
+    margin: 5px;
+  }
+  
+  .popup-content {
+    padding: 15px;
+  }
+  
+  .popup-title {
+    font-size: 16px;
+  }
+  
+  .close-button {
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+  }
+  
+  .threshold-list li {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  
+  .warning-text {
+    font-size: 13px;
+    padding: 10px;
+  }
+  
+  .not-provided-section,
+  .submission-guidelines {
+    padding: 15px;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

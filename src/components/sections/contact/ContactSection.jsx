@@ -443,7 +443,7 @@ const ContactSection = () => {
                 </div>
               )}
               
-              <form className="contact-form" onSubmit={handleSubmit}>
+              <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
                 {/* Row 1: First Name and Last Name */}
                 <div className="form-row">
                   <div className="form-group">
