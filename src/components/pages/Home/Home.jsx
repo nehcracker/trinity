@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import HeroSection from '../../sections/HeroSection/HeroSection';
 import ServicesSlider from '../../sections/ServicesSlider/ServicesSlider';
 import TrinityServicesSection from '../../sections/servicesection/TrinityServicesSection';
-import GrantServicesSection from '../../sections/GrantServices/GrantServicesSection';
 import AboutUs from '../../sections/AboutUs/AboutUs';
 import KeyStats from '../../sections/KeyStats/KeyStats';
 import ContactSection from '../../sections/contact/ContactSection';
@@ -49,16 +48,6 @@ const Home = () => {
           className="section-container"
         >
         <TrinityServicesSection />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="section-container"
-        >
-        <GrantServicesSection />
         </motion.div>
 
         <motion.div
