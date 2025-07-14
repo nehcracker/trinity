@@ -1,9 +1,9 @@
-import React, { useState, } from 'react';
+// ContactSection.jsx - Updated with word restriction validation
+
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './ContactSection.css';
-
-
 
 // Comprehensive list of countries for the dropdown
 const countries = [
@@ -257,27 +257,127 @@ const countries = [
   { code: "ZW", name: "Zimbabwe" }
 ];
 
-// API URL based on environment
-const API_URL = process.env.NODE_ENV === 'production'
-    ? 'https://email-server.nehlmac4.workers.dev/api/email/contact'
-    : 'https://email-server.nehlmac4.workers.dev/api/email/contact'
+// Restricted words/phrases configuration
+const RESTRICTED_TERMS = [
+  // Business startup related
+  'start up capital',
+  'startup capital',
+  'business start up',
+  'business startup',
+  'start-up capital',
+  'need money to start a business',
+  'money to start business',
+  'starting a business',
+  'new business funding',
+  
+  // Small business related
+  'small business',
+  'small business loan',
+  'small business financing',
+  'small business grant',
+  'small business funding',
+  
+  // Grants related
+  'grants',
+  'business grant',
+  'business grants',
+  'government grants',
+  'free grants',
+  'grant money',
+  'grant funding',
+  'any grants available',
+  'grants for small businesses',
+  'grants available for small businesses',
+  
+  // Loan apps and quick funding
+  'business loan app',
+  'best business loan app',
+  'loan app',
+  'quick loan',
+  'instant loan',
+  'fast loan',
+  'emergency loan',
+  'payday loan',
+  'cash advance',
+  
+  // Personal/consumer loans
+  'personal loan',
+  'consumer loan',
+  'individual loan',
+  'private loan',
+  'unsecured loan',
+  
+  // Microfinance related
+  'microfinance',
+  'microcredit',
+  'micro loan',
+  'small loan',
+  'mini loan',
+  
+  // Other restricted terms
+  'free money',
+  'easy money',
+  'quick cash',
+  'instant cash',
+  'bad credit',
+  'no credit check',
+  'guaranteed approval',
+  'side hustle',
+  'passive income',
+  'get rich quick'
+];
 
-
-const ContactSection = () => {
-  // Add the gtag_report_conversion function
-  function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) !== 'undefined') {
-        window.location = url;
-      }
-    };
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-16898712872/nV9ECMGRkrsaEKjK9_k-',
-      'event_callback': callback
+// Validation function
+const validateFormContent = (formData) => {
+  const errors = [];
+  
+  // Combine all text fields for validation
+  const textFields = [
+    formData.message,
+    formData.subject,
+    formData.service,
+    formData.firstName,
+    formData.lastName
+  ];
+  
+  const combinedText = textFields.join(' ').toLowerCase();
+  
+  // Check for restricted terms
+  const foundTerms = RESTRICTED_TERMS.filter(term => 
+    combinedText.includes(term.toLowerCase())
+  );
+  
+  if (foundTerms.length > 0) {
+    errors.push({
+      type: 'restricted_content',
+      message: `Your message contains terms that don't align with our services. Please review and modify your inquiry.`,
+      foundTerms: foundTerms
     });
-    return false;
   }
+  
+  // Additional validation for suspicious patterns
+  const suspiciousPatterns = [
+    /\b(loan|funding|grant|money|capital|finance|financing)\s*(for|to)\s*(start|begin|launch|open)\b/gi,
+    /\b(quick|fast|instant|immediate|emergency)\s*(loan|money|cash|funding)\b/gi,
+    /\b(free|easy|guaranteed)\s*(money|loan|grant|funding)\b/gi,
+    /\b(bad|poor|no)\s*credit\b/gi,
+    /\bmicro\s*(loan|finance|credit)\b/gi
+  ];
+  
+  suspiciousPatterns.forEach(pattern => {
+    if (pattern.test(combinedText)) {
+      errors.push({
+        type: 'suspicious_pattern',
+        message: 'Your inquiry appears to be for services we don\'t provide. Please ensure your message aligns with our commercial financing services.'
+      });
+    }
+  });
+  
+  return errors;
+};
 
+// Enhanced ContactSection component
+const ContactSection = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -293,7 +393,13 @@ const ContactSection = () => {
   const [formStatus, setFormStatus] = useState({
     isSubmitting: false,
     isSubmitted: false,
-    error: null
+    error: null,
+    validationErrors: []
+  });
+
+  const [realTimeValidation, setRealTimeValidation] = useState({
+    showWarning: false,
+    warningMessage: ''
   });
 
   const { ref, inView } = useInView({
@@ -301,28 +407,95 @@ const ContactSection = () => {
     triggerOnce: true
   });
 
+  // Real-time validation on text input
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
+    const newFormData = {
+      ...formData,
       [name]: value
-    }));
+    };
+    
+    setFormData(newFormData);
+    
+    // Real-time validation for message and subject fields
+    if (name === 'message' || name === 'subject') {
+      const errors = validateFormContent(newFormData);
+      
+      if (errors.length > 0) {
+        setRealTimeValidation({
+          showWarning: true,
+          warningMessage: 'Your message may contain terms that don\'t align with our services. Please review before submitting.'
+        });
+      } else {
+        setRealTimeValidation({
+          showWarning: false,
+          warningMessage: ''
+        });
+      }
+    }
   };
 
+  // Enhanced form submission with validation
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
+    
+    // Clear previous errors
+    setFormStatus(prev => ({
+      ...prev,
+      error: null,
+      validationErrors: []
+    }));
+    
+    // Validate form content
+    const validationErrors = validateFormContent(formData);
+    
+    if (validationErrors.length > 0) {
+      setFormStatus(prev => ({
+        ...prev,
+        validationErrors: validationErrors,
+        error: 'Please review your submission. It contains content that doesn\'t align with our commercial financing services.'
+      }));
+      
+      // Log the attempt for monitoring
+      console.log('Form submission blocked - Restricted content detected:', {
+        timestamp: new Date().toISOString(),
+        foundTerms: validationErrors.flatMap(error => error.foundTerms || []),
+        userAgent: navigator.userAgent,
+        formData: {
+          email: formData.email,
+          service: formData.service,
+          country: formData.country
+        }
+      });
+      
+      return;
+    }
+    
+    // Proceed with normal submission
+    setFormStatus(prev => ({
+      ...prev,
+      isSubmitting: true,
+      isSubmitted: false,
+      error: null
+    }));
   
     try {
+      const API_URL = process.env.NODE_ENV === 'production'
+        ? 'https://email-server.nehlmac4.workers.dev/api/email/contact'
+        : 'https://email-server.nehlmac4.workers.dev/api/email/contact';
+        
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          validationPassed: true, // Flag to indicate server-side validation passed
+          timestamp: new Date().toISOString()
+        }),
       });
   
-      // Check if response is JSON or HTML
       const contentType = response.headers.get("content-type");
   
       if (contentType && contentType.includes("application/json")) {
@@ -333,12 +506,17 @@ const ContactSection = () => {
             isSubmitting: false,
             isSubmitted: true,
             error: null,
+            validationErrors: []
           });
   
-          // Call the conversion tracking function after successful submission
-          gtag_report_conversion();
+          // Call conversion tracking
+          if (window.gtag) {
+            window.gtag('event', 'conversion', {
+              'send_to': 'AW-16898712872/nV9ECMGRkrsaEKjK9_k-'
+            });
+          }
   
-          // Reset form after successful submission
+          // Reset form
           setFormData({
             firstName: '',
             lastName: '',
@@ -349,6 +527,11 @@ const ContactSection = () => {
             service: '',
             subject: '',
             message: '',
+          });
+          
+          setRealTimeValidation({
+            showWarning: false,
+            warningMessage: ''
           });
   
           // Reset success message after 5 seconds
@@ -362,31 +545,21 @@ const ContactSection = () => {
           throw new Error(data.message || 'Unexpected response from server. Please try again.');
         }
       } else {
-        // If not JSON, handle HTML or other response formats
-        const text = await response.text();
-        console.error('Non-JSON response:', text); // Log the response for debugging
-        throw new Error('Server responded with non-JSON format. Please contact the administrator.');
+        throw new Error('Server responded with non-JSON format. Please contact support.');
       }
     } catch (error) {
       console.error('Error response:', error);
-  
-      // More detailed error handling
-      let errorMessage = 'Failed to send your message. Please try again later.';
-  
-      if (error.message.includes('Unexpected token')) {
-        errorMessage = 'The server returned an invalid response format. Please contact support.';
-      } else if (error.message) {
-        errorMessage = error.message;
-      }
-  
+      
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
-        error: errorMessage,
+        error: 'Failed to send your message. Please try again later.',
+        validationErrors: []
       });
     }
   };
-  // Animation variants
+
+  // Animation variants (keeping original ones)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -417,7 +590,7 @@ const ContactSection = () => {
         >
           <h2 className="contact-title">Contact Us</h2>
           <p className="contact-subtitle">
-            Reach out to discuss your financing needs or schedule a free consultation with our team.
+            Reach out to discuss your commercial financing needs or schedule a consultation with our team. We specialize in large-scale commercial projects and established business financing.
           </p>
         </motion.div>
 
@@ -431,6 +604,13 @@ const ContactSection = () => {
             <motion.div className="contact-form-wrapper" variants={itemVariants}>
               <h3>Send Us a Message</h3>
               
+              {/* Real-time validation warning */}
+              {realTimeValidation.showWarning && (
+                <div className="form-warning-message">
+                  ⚠️ {realTimeValidation.warningMessage}
+                </div>
+              )}
+              
               {formStatus.isSubmitted && (
                 <div className="form-success-message">
                   Thank you for your message! We'll get back to you shortly.
@@ -440,11 +620,22 @@ const ContactSection = () => {
               {formStatus.error && (
                 <div className="form-error-message">
                   {formStatus.error}
+                  {formStatus.validationErrors.length > 0 && (
+                    <div className="validation-details">
+                      <p><strong>Our services focus on:</strong></p>
+                      <ul>
+                        <li>Large-scale commercial real estate financing</li>
+                        <li>Established business expansion funding</li>
+                        <li>Project financing for developed businesses</li>
+                        <li>Working capital for operational companies</li>
+                      </ul>
+                    </div>
+                  )}
                 </div>
               )}
               
               <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
-                {/* Row 1: First Name and Last Name */}
+                {/* Form fields remain the same */}
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
@@ -473,7 +664,6 @@ const ContactSection = () => {
                   </div>
                 </div>
                 
-                {/* Row 2: Email and Phone */}
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="email">Email Address</label>
@@ -502,7 +692,6 @@ const ContactSection = () => {
                   </div>
                 </div>
                 
-                {/* Row 3: City and Country */}
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="city">City</label>
@@ -524,46 +713,43 @@ const ContactSection = () => {
                       onChange={handleChange}
                       required
                     >
-                      {countries.map(country => (
-                        <option key={country.code} value={country.code}>
-                          {country.name}
+                      {countries.map(({ code, name }) => (
+                        <option key={code} value={code}>
+                          {name}
                         </option>
                       ))}
                     </select>
                   </div>
                 </div>
 
-                
-                {/* Row 4: Service of Interest */}
                 <div className="form-group">
-                    <label htmlFor="service">Service of Interest</label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="">Select a service</option>
-                      <option value="Real Estate Financing">Real Estate Financing</option>
-                      <option value="Project Financing">Project Financing</option>
-                      <option value="Working Capital">Working Capital</option>
-                      <option value="Equity Financing">Equity Financing</option>
-                      <option value="Agri-Business Financing">Agri-Business Financing</option>
-                      <option value="Non-Recourse Financing">Non-Recourse Financing</option>
-                    </select>
-                  </div>
+                  <label htmlFor="service">Service of Interest</label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select a service</option>
+                    <option value="Commercial Real Estate Financing">Commercial Real Estate Financing</option>
+                    <option value="Large Project Financing">Large Project Financing</option>
+                    <option value="Business Expansion Capital">Business Expansion Capital</option>
+                    <option value="Working Capital (Established Business)">Working Capital (Established Business)</option>
+                    <option value="Equity Financing">Equity Financing</option>
+                    <option value="Agri-Business Financing">Agri-Business Financing</option>
+                    <option value="Non-Recourse Financing">Non-Recourse Financing</option>
+                  </select>
+                </div>
 
-                
-                {/* Row 6: Message */}
                 <div className="form-group">
-                  <label htmlFor="message">Your Inquiry Message</label>
+                  <label htmlFor="message">Your Commercial Financing Inquiry</label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your financing needs"
+                    placeholder="Please describe your commercial financing needs, project details, business background, and funding requirements"
                     rows="5"
                     required
                   ></textarea>
