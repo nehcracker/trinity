@@ -341,11 +341,11 @@ const validateFormContent = (formData) => {
   ];
 
   // Normalize combined text: lowercase and remove punctuation
-  const combinedText = textFields.join(' ').toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").replace(/\s{2,}/g," ");
+  const combinedText = textFields.join(' ').toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g," ").replace(/\s{2,}/g," ");
 
   // Check for restricted terms using regex word boundaries to avoid partial matches
   const foundTerms = RESTRICTED_TERMS.filter(term => {
-    const pattern = new RegExp(`\\b${term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i');
+    const pattern = new RegExp(`\\b${term.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i');
     return pattern.test(combinedText);
   });
 
