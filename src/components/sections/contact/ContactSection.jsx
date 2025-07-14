@@ -330,7 +330,7 @@ const RESTRICTED_TERMS = [
 // Validation function
 const validateFormContent = (formData) => {
   const errors = [];
-  
+
   // Combine all text fields for validation
   const textFields = [
     formData.message,
@@ -339,14 +339,16 @@ const validateFormContent = (formData) => {
     formData.firstName,
     formData.lastName
   ];
-  
-  const combinedText = textFields.join(' ').toLowerCase();
-  
-  // Check for restricted terms
-  const foundTerms = RESTRICTED_TERMS.filter(term => 
-    combinedText.includes(term.toLowerCase())
-  );
-  
+
+  // Normalize combined text: lowercase and remove punctuation
+  const combinedText = textFields.join(' ').toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ").replace(/\s{2,}/g," ");
+
+  // Check for restricted terms using regex word boundaries to avoid partial matches
+  const foundTerms = RESTRICTED_TERMS.filter(term => {
+    const pattern = new RegExp(`\\b${term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i');
+    return pattern.test(combinedText);
+  });
+
   if (foundTerms.length > 0) {
     errors.push({
       type: 'restricted_content',
@@ -354,7 +356,7 @@ const validateFormContent = (formData) => {
       foundTerms: foundTerms
     });
   }
-  
+
   // Additional validation for suspicious patterns
   const suspiciousPatterns = [
     /\b(loan|funding|grant|money|capital|finance|financing)\s*(for|to)\s*(start|begin|launch|open)\b/gi,
@@ -363,7 +365,7 @@ const validateFormContent = (formData) => {
     /\b(bad|poor|no)\s*credit\b/gi,
     /\bmicro\s*(loan|finance|credit)\b/gi
   ];
-  
+
   suspiciousPatterns.forEach(pattern => {
     if (pattern.test(combinedText)) {
       errors.push({
@@ -372,7 +374,7 @@ const validateFormContent = (formData) => {
       });
     }
   });
-  
+
   return errors;
 };
 
