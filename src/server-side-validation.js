@@ -175,6 +175,7 @@ function calculateRiskScore(errors, warnings) {
       case 'high': score += 10; break;
       case 'medium': score += 5; break;
       case 'low': score += 2; break;
+      default: break;
     }
   });
   
@@ -214,7 +215,7 @@ function logValidationResult(formData, validation, clientIP) {
 }
 
 // Main handler for Cloudflare Workers
-export default {
+const handler = {
   async fetch(request, env, ctx) {
     // Only handle POST requests
     if (request.method !== 'POST') {
@@ -276,3 +277,5 @@ export default {
     }
   }
 };
+
+export default handler;
